@@ -1,0 +1,11 @@
+{
+    "Blog": true,
+    "IAM": true,
+    "CMS": true,
+    "System": true,
+    "Global": true,
+    "Business": true,
+    "Recruitment": true,
+    "CRM": true,
+    "LMS": true
+}
