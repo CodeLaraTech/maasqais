@@ -1,680 +1,769 @@
 @extends('layouts.main')
 @section('content')
     <main>
+        <!-- SLIDER -->
         @if($banners && $banners->items->count())
             <!--===== HERO AREA START =======-->
-            <div class="_relative">
-                <div class="hero10-sliders">
-                    @foreach($banners->items as $item)
-                        <div class="hero10-single">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="main-heading">
-                                            @if($item->subtitle)
-                                                <span class="span">
-                                                    <img src="{{ asset('frontend/img/icons/span10.png') }}" alt="">
-                                                    {{ $item->subtitle }}
-                                                </span>
-                                            @endif
-                                            <h1>{!! nl2br(e($item->title)) !!}</h1>
-                                            <div class="space16"></div>
-                                            <p>{{ $item->content }}</p>
-                                            <div class="space30"></div>
+            <section class="section style-three slider sm:h-[43.5rem] h-[32rem] relative">
 
-                                            <div class="button">
-                                                @if(is_array($item->buttons))
-                                                    @foreach($item->buttons as $btn)
-                                                        <a class="theme-btn1" href="{{ $btn['url'] ?? '#' }}">
-                                                            {{ $btn['label'] ?? 'Learn More' }}
-                                                            <span><i class="fa-solid fa-arrow-right"></i></span>
-                                                        </a>
-                                                    @endforeach
-                                                @endif
-                                            </div>
+                <!-- Prev Button -->
+                <button
+                    class="btn_prev flex items-center justify-center absolute top-1/2 left-0 z-[2] -translate-y-1/2 w-13 h-[4.75rem] bg-white min-[1600px]:bg-opacity-10 bg-opacity-30 text-white duration-300 lg:hover:bg-opacity-80 lg:hover:text-black">
+                    <span class="ph ph-caret-left text-xl"></span>
+                    <span class="blind">button prev</span>
+                </button>
 
-                                        </div>
-                                    </div>
+                <!-- Swiper Wrapper -->
+                <div class="slider_swiper_three swiper w-full h-full">
+                    <ul class="swiper-wrapper">
+                        @foreach($banners->items as $item)
+                            <li class="swiper-slide flex items-center justify-center relative">
+                                <div class="slider_bg absolute top-0 left-0 w-full h-full pointer-events-none">
+                                    <img src="{{ asset($item->image ?? 'frontend/assets/images/slider/default.jpg') }}"
+                                        alt="{{ $item->title }}" class="h-full object-cover">
                                 </div>
-                            </div>
-                        </div>
-                    @endforeach
+
+                                <div class="container relative max-sm:-mt-10">
+                                    @if($item->title)
+                                        <h2 class="section_tit_three lg:w-2/3 text-white heading1" style="--i:6">
+                                            {!! nl2br(e($item->title)) !!}
+                                        </h2>
+                                    @endif
+
+                                    @if($item->content)
+                                        <p class="section_desc mt-4 text-white body2" style="--i:7">
+                                            {{ $item->content }}
+                                        </p>
+                                    @endif
+
+                                    @if(is_array($item->buttons) && count($item->buttons))
+                                        <ul class="slider_btn_group flex flex-wrap gap-4 mt-9">
+                                            @foreach($item->buttons as $index => $btn)
+                                                <li class="slider_btn_item" style="--i: {{ 8 + $index }}">
+                                                    <a href="{{ $btn['url'] ?? '#' }}"
+                                                        class="slider_btn btn btn_icon {{ $btn['bg'] ?? 'bg-yellow' }}">
+                                                        <span>{{ $btn['label'] ?? 'Learn More' }}</span>
+                                                        <span class="ph ph-arrow-up-right text-2xl"></span>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="swiper-pagination pagination-white"></div>
                 </div>
 
-                <div class="hero10-btns">
-                    <button class="hero10-next-arrow"><i class="fa-solid fa-arrow-left"></i></button>
-                    <button class="hero10-prev-arrow"><i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-            </div>
+                <!-- Next Button -->
+                <button
+                    class="btn_next flex items-center justify-center absolute top-1/2 right-0 z-[2] -translate-y-1/2 w-13 h-[4.75rem] bg-white min-[1600px]:bg-opacity-10 bg-opacity-30 text-white duration-300 lg:hover:bg-opacity-80 lg:hover:text-black">
+                    <span class="ph ph-caret-right text-xl"></span>
+                    <span class="blind">button next</span>
+                </button>
+            </section>
         @endif
 
-        <!--=====HERO AREA END=======-->
 
-        <!--=====HERO ICONS START=======-->
-        <div class="hero10-icons-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-8">
-                        <div class="hero10-icon-boxs">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="icon">
-                                            <span><i class="fa-light fa-users fs-4"></i></span>
-                                        </div>
-                                        <div class="heading">
-                                            <h5>Medical Staffing</h5>
-                                            <p>9,200+ Professionals</p>
-                                        </div>
-                                    </div>
+        <!-- ABOUT -->
+        <section class="section about sm:py-25 py-15">
+            <div class="container flex max-xl:flex-col-reverse items-center xl:gap-20 gap-10">
+                <div class="about_content w-full">
+                    <span class="section_tag tag bg-red animate">About Us</span>
+                    <h3 class="section_tit mt-4 heading3 animate">Maas Qais Trading Est. – Your Trusted Procurement Partner
+                    </h3>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                        At Maas Qais Trading Est., Jeddah – Saudi Arabia, we are a team of procurement experts dedicated to
+                        fulfilling industrial supply requirements with quality, affordability, and timely delivery.
+                    </p>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                        Our mission is to support customers with:
+                    </p>
+                    <ul class="about_benefit flex flex-wrap gap-10 gap-y-6 mt-5">
+                        <li class="flex items-center gap-5 animate" style="--i: 1">
+                            <span class="ph ph-check text-2xl text-red"></span>
+                            <strong class="body2">The best quality products</strong>
+                        </li>
+                        <li class="flex items-center gap-5 animate" style="--i: 2">
+                            <span class="ph ph-check text-2xl text-red"></span>
+                            <strong class="body2">At the right price</strong>
+                        </li>
+                        <li class="flex items-center gap-5 animate" style="--i: 3">
+                            <span class="ph ph-check text-2xl text-red"></span>
+                            <strong class="body2">With on-time delivery</strong>
+                        </li>
+                    </ul>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                        We proudly supply a diverse range of products to industries in Saudi Arabia and beyond.
+                        Occasionally, our customers require items outside our defined categories — and we make it our goal
+                        to source them, saving your time and ensuring smooth operations.
+                    </p>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                        Looking forward to building long-term business relationships, we welcome you to share your
+                        requirements at
+                        <a href="mailto:info@maasqais.com" class="text-red underline">info@maasqais.com</a>. Our team will
+                        get back to you with the best sources for your needs.
+                    </p>
+                    <ul class="about_btn flex flex-wrap gap-8 gap-y-6 mt-10">
+                        <li class="animate" style="--i: 1">
+                            <a href="{{ url('about-us') }}" class="btn bg-red">About Us</a>
+                        </li>
+                        <li class="animate" style="--i: 2">
+                            <a href="#" class="flex items-center gap-3 group">
+                                <span
+                                    class="flex items-center justify-center w-14 h-14 border-2 border-red duration-400 group-hover:bg-red group-hover:text-white">
+                                    <span class="ph ph-envelope-simple text-3xl"></span>
+                                </span>
+                                <div>
+                                    <span class="text-variant1">Have any Question?</span>
+                                    <strong class="heading6 block mt-0.5">info@maasqais.com</strong>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="icon">
-                                            <span><i class="fa-light fa-users fs-4"></i></span>
-                                        </div>
-                                        <div class="heading">
-                                            <h5>IT Specialists</h5>
-                                            <p>5,800+ Experts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="icon">
-                                            <span><i class="fa-light fa-users fs-4"></i></span>
-                                        </div>
-                                        <div class="heading">
-                                            <h5>Engineering</h5>
-                                            <p>3,500+ Talent</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about_img flex-shrink-0 grid grid-cols-2 sm:gap-7.5 gap-6 relative xl:w-[55%] sm:w-2/3 w-full">
+                    <div class="about_bg animate animate_right">
+                        <img src="frontend/assets/images/components/about3_1.jpg" alt="Industrial Supplies">
+                    </div>
+                    <div class="about_bg sm:pt-20 pt-12 animate animate_left">
+                        <img src="frontend/assets/images/components/about4_2.jpg" alt="Procurement Experts">
                     </div>
                 </div>
             </div>
-        </div>
-        <!--=====HERO ICONS END=======-->
+        </section>
 
-        <!--=====ABOUT AREA START=======-->
-        <div class="about10 sp">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="about10-images">
-                            <div class="cs_height_118 cs_height_lg_70"></div>
-                            <div class="cs_case_study_1_list">
-                                <div class="cs_case_study cs_style_1 cs_hover_active active">
-                                    <div class="cs_case_study_thumb cs_bg_filed"
-                                        data-src="frontend/img/hero/hero7-image1.png"></div>
+
+
+        <!-- SERVICES -->
+        <section class="section services sm:py-25 py-15 bg-surface">
+            <div class="container flex flex-col items-center">
+                <div class="heading flex max-lg:flex-col justify-center gap-7 gap-y-5">
+                    <div class="lg:w-1/2 animate animate_right show">
+                        <span class="section_tag tag bg-red">Our Products</span>
+                        <h3 class="section_tit mt-4 heading3">Industrial Products & Consumables We Supply</h3>
+                    </div>
+                    <div class="lg:w-1/2 animate animate_left show">
+                        <p class="section_desc body2">We supply a broad portfolio of industrial products and consumables
+                            designed to meet your operational needs with quality and reliability.</p>
+                        <a href="{{ url('shop') }}" class="inline-flex items-center gap-2 mt-3 mx-auto">
+                            <span class="has_line line_black animate_width txt-button">View All Categories</span>
+                            <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                        </a>
+
+                    </div>
+                </div>
+                <ul class="services_list grid xl:grid-cols-3 md:grid-cols-2 lg:gap-11 gap-6 lg:mt-12 mt-9">
+                    <li class="services_item animate show" style="--i: 1">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-1.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Leak Detection">
                                 </div>
-                                <div class="cs_case_study cs_style_1 cs_hover_active">
-                                    <div class="cs_case_study_thumb cs_case_study_thumb2 cs_bg_filed"
-                                        data-src="frontend/img/about/about1-img1.html"></div>
-                                </div>
-                                <div class="cs_case_study cs_style_1 cs_hover_active">
-                                    <div class="cs_case_study_thumb cs_case_study_thumb3 cs_bg_filed"
-                                        data-src="frontend/img/about/about1-img1.html"></div>
-                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-pipe-leak sm:text-3xl text-xl"></span>
+                                </span>
                             </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Belts</strong>
+                                <p class="services_desc mt-4 text-variant1">Durable industrial belts including V-belts,
+                                    timing
+                                    belts, and conveyor belts for power transmission and material handling.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="services_item animate show" style="--i: 2">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-2.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Drain Cleaning">
+                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-pipe-oval sm:text-3xl text-xl"></span>
+                                </span>
+                            </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Tools</strong>
+                                <p class="services_desc mt-4 text-variant1">Comprehensive range of hand tools, power tools,
+                                    and
+                                    precision tools for repair, maintenance, and industrial applications.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="services_item animate show" style="--i: 3">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-3.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Pipe Installation">
+                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-spanner sm:text-3xl text-xl"></span>
+                                </span>
+                            </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Safety & PPE</strong>
+                                <p class="services_desc mt-4 text-variant1">Protective gear including helmets, gloves,
+                                    safety
+                                    glasses, and footwear to keep your workforce safe and compliant.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="services_item animate show" style="--i: 4">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-4.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Heater Installation">
+                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-heater sm:text-3xl text-xl"></span>
+                                </span>
+                            </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Packing Materials</strong>
+                                <p class="services_desc mt-4 text-variant1">Strong packing solutions including cartons,
+                                    stretch
+                                    films, bubble wraps, and adhesive tapes for storage and transport.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="services_item animate show" style="--i: 5">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-5.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Toilet Repair">
+                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-plunger sm:text-3xl text-xl"></span>
+                                </span>
+                            </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Oil & Lubricants</strong>
+                                <p class="services_desc mt-4 text-variant1">High-performance lubricants, greases, and oils
+                                    that
+                                    minimize wear and extend the life of machinery and vehicles.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="services_item animate show" style="--i: 6">
+                        <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+                            <div class="services_thumb relative">
+                                <div class="services_img overflow-hidden">
+                                    <img src="frontend/assets/images/services/2-6.jpg"
+                                        class="duration-400 group-hover:scale-110" alt="Sewer Services">
+                                </div>
+                                <span
+                                    class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                                    <span class="icon-tap sm:text-3xl text-xl"></span>
+                                </span>
+                            </div>
+                            <div class="services_info">
+                                <strong class="services_name heading5 hover:underline">Bearings</strong>
+                                <p class="services_desc mt-4 text-variant1">Wide selection of ball bearings, roller
+                                    bearings,
+                                    and mounted units engineered for long-lasting smooth performance.</p>
+                                <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                                    <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                                    <span class="ph-bold ph-arrow-up-right text-2xl"></span>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!-- WHY CHOOSE US -->
+        <section class="section choose_us sm:py-25 py-15 bg-surface">
+            <div class="container flex max-lg:flex-col items-center xl:gap-20 gap-10">
+                <div class="choose_us_img flex-shrink-0 lg:w-[45%] sm:w-2/3 w-full animate animate_right">
+                    <img src="frontend/assets/images/components/form_request_img3.jpg" alt="WHY CHOOSE US">
+                </div>
+                <div class="choose_us_content w-full">
+                    <span class="section_tag tag bg-red animate">WHY CHOOSE US</span>
+                    <h3 class="section_tit mt-4 heading3 animate">Why Choose Maas Qais Trading Est.</h3>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">We are committed to being your trusted
+                        procurement partner for industrial supplies, offering quality products at competitive prices with
+                        reliable delivery.</p>
+                    <div class="heading_menu mt-10 border-b-2 border-outline animate">
+                        <div class="menu_tab style-red -mb-0.5">
+                            <ul class="menu flex gap-10" role="tablist">
+                                <li class="indicator absolute bottom-0 h-0.5 bg-red duration-300"></li>
+                                <li class="tab_item" role="presentation">
+                                    <button
+                                        class="tab_btn tab_btn_border pb-2.5 heading6 hover:text-red duration-300 active"
+                                        id="services_tab01" role="tab" aria-controls="services_01" aria-selected="true">Our
+                                        Advantages</button>
+                                </li>
+                                <li class="tab_item" role="presentation">
+                                    <button class="tab_btn tab_btn_border pb-2.5 heading6 hover:text-red duration-300"
+                                        id="services_tab02" role="tab" aria-controls="services_02" aria-selected="false">Our
+                                        Mission</button>
+                                </li>
+                                <li class="tab_item" role="presentation">
+                                    <button class="tab_btn tab_btn_border pb-2.5 heading6 hover:text-red duration-300"
+                                        id="services_tab03" role="tab" aria-controls="services_03" aria-selected="false">Our
+                                        Approach</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="col-lg-5">
-                        <div class="heading1">
-                            <span class="span" data-aos="zoom-in-left" data-aos-duration="700"><img
-                                    src="frontend/img/icons/span10.png" alt=""> About Global Overseas</span>
-                            <h2 class="text-anime-style-3">Transforming Staffing Through Innovation</h2>
-                            <div class="space16"></div>
-                            <p data-aos="fade-left" data-aos-duration="700">At Global Overseas, we redefine staffing
-                                solutions by combining deep industry knowledge with cutting-edge technology. Our approach
-                                ensures perfect matches between top-tier professionals and leading organizations worldwide.
-                            </p>
-                            <div class="row" data-aos="fade-left" data-aos-duration="900">
-                                <div class="col-md-4 col-6">
-                                    <div class="counter-box">
-                                        <h3>25+</h3>
-                                        <p>Years Experience</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6">
-                                    <div class="counter-box">
-                                        <h3>98%</h3>
-                                        <p>Placement Success</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6">
-                                    <div class="counter-box">
-                                        <h3>50+</h3>
-                                        <p>Countries Served</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space30"></div>
-                            <div class="" data-aos="fade-left" data-aos-duration="1100">
-                                <a class="theme-btn1" href="{{url('about-us')}}">Our Success Story <span><i
-                                            class="fa-solid fa-arrow-right"></i></span></a>
-                            </div>
-                        </div>
+                    <div id="services_01" class="tab_panel mt-6 animate active" role="tabpanel"
+                        aria-labelledby="services_tab01" aria-hidden="false">
+                        <p class="text-variant1">We offer comprehensive industrial supply solutions with a focus on quality,
+                            reliability, and customer satisfaction.</p>
+                        <ul class="list_feature grid xs:grid-cols-2 gap-10 gap-y-5 mt-5">
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">1000+ Products across multiple categories</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Trusted Quality with competitive pricing</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Swift Delivery to keep your operations running</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Flexible Sourcing for special requirements</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Customer-Centric Service approach</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Long-term partnership focus</strong>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="services_02" class="tab_panel mt-6 animate" role="tabpanel" aria-labelledby="services_tab02"
+                        aria-hidden="true">
+                        <p class="text-variant1">Our mission is to support industries in Saudi Arabia and beyond with the
+                            best quality products at the right price with on-time delivery.</p>
+                        <p class="text-variant1 mt-2">We aim to become your trusted procurement partner, providing not just
+                            products but complete solutions that keep your operations running smoothly.</p>
+                    </div>
+                    <div id="services_03" class="tab_panel mt-6 animate" role="tabpanel" aria-labelledby="services_tab03"
+                        aria-hidden="true">
+                        <p class="text-variant1">We take a proactive approach to understanding your needs and providing
+                            tailored solutions that meet your specific requirements.</p>
+                        <ul class="list_feature flex flex-col gap-5 mt-5">
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Understanding client requirements thoroughly</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Sourcing quality products from reliable suppliers</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Ensuring timely delivery to prevent operational delays</strong>
+                            </li>
+                            <li class="flex gap-1">
+                                <span class="ph ph-check text-red text-xl"></span>
+                                <strong class="txt-button">Providing ongoing support and building long-term
+                                    relationships</strong>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn_area animate">
+                        <a href="#" class="btn mt-10 bg-red">Contact Us</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--=====ABOUT AREA END=======-->
+        </section>
 
-        <!--=====SERVICE AREA START=======-->
-        <div class="service1 sp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 m-auto text-center">
-                        <div class="heading1-w">
-                            <span class="span" data-aos="zoom-in-left" data-aos-duration="700">Our Specializations</span>
-                            <h2 class="text-anime-style-3">Comprehensive Workforce Solutions</h2>
-                            <div class="space16"></div>
-                            <p data-aos="fade-left" data-aos-duration="800">
-                                From healthcare professionals to technology experts, we deliver specialized staffing
-                                solutions that drive organizational success across multiple sectors.
-                            </p>
+        <!-- PROCESS -->
+        <section class="section process style-three style-four sm:py-25 py-15">
+            <div class="container flex flex-col items-center">
+                <span class="section_tag tag bg-red animate">Our Process</span>
+                <h3 class="section_title mt-4 heading3 text-center animate">Our Procurement Process</h3>
+                <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 text-center animate">We follow a streamlined process
+                    to ensure your industrial supply needs are met efficiently and effectively.</p>
+                <ul class="process_list grid xl:grid-cols-4 sm:grid-cols-2 gap-[4.375rem] gap-y-10 lg:mt-12 mt-9">
+                    <li class="process_item flex flex-col items-center gap-7 relative group animate" style="--i: 1">
+                        <div
+                            class="process_img overflow-hidden w-[12.5rem] h-[12.5rem] p-1.5 border-2 border-transparent rounded-full duration-400 group-hover:border-red">
+                            <img src="frontend/assets/images/process/1.jpg" class="h-full object-cover rounded-full"
+                                alt="Requirement Analysis">
                         </div>
-                    </div>
-                </div>
-
-                <div class="space30"></div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service1-box" data-aos="zoom-in-up" data-aos-duration="700">
-                            <div class="image overlay-anim">
-                                <img src="frontend/img/service/service1-img1.png" alt="">
-                            </div>
-                            <div class="hover-area">
-                                <div class="icon">
-                                    <img src="frontend/img/icons/service1-icon1.png" alt="">
-                                </div>
-                                <div class="space16"></div>
-                                <div class="heading1-w">
-                                    <h4><a href="service-details.html">AR Billing Services</a></h4>
-                                    <div class="space16"></div>
-                                    <p>
-                                        Delivering skilled AR billing professionals to healthcare providers for efficient
-                                        revenue cycle management and faster reimbursements.
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="process_info">
+                            <span class="block txt-label text-red text-center">Step 1</span>
+                            <h5 class="mt-4 heading5 text-center">Requirement Analysis</h5>
+                            <p class="mt-3 text-variant1 text-center">We carefully analyze your specific industrial supply
+                                needs and requirements.</p>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service1-box active" data-aos="zoom-in-up" data-aos-duration="900">
-                            <div class="image overlay-anim">
-                                <img src="frontend/img/service/service1-img2.png" alt="">
-                            </div>
-                            <div class="hover-area">
-                                <div class="icon">
-                                    <img src="frontend/img/icons/service1-icon2.png" alt="">
-                                </div>
-                                <div class="space16"></div>
-                                <div class="heading1-w">
-                                    <h4><a href="service-details.html">Partnering with AR Billing Companies</a></h4>
-                                    <div class="space16"></div>
-                                    <p>
-                                        Collaborating with AR billing firms to provide them with highly qualified staffing
-                                        resources tailored to their unique operational needs.
-                                    </p>
-                                </div>
-                            </div>
+                    </li>
+                    <li class="process_item flex flex-col items-center gap-7 relative group animate" style="--i: 2">
+                        <div
+                            class="process_img overflow-hidden w-[12.5rem] h-[12.5rem] p-1.5 border-2 border-transparent rounded-full duration-400 group-hover:border-red">
+                            <img src="frontend/assets/images/process/2.jpg" class="h-full object-cover rounded-full"
+                                alt="Product Sourcing">
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service1-box" data-aos="zoom-in-up" data-aos-duration="1100">
-                            <div class="image overlay-anim">
-                                <img src="frontend/img/service/service1-img3.png" alt="">
-                            </div>
-                            <div class="hover-area">
-                                <div class="icon">
-                                    <img src="frontend/img/icons/service1-icon3.png" alt="">
-                                </div>
-                                <div class="space16"></div>
-                                <div class="heading1-w">
-                                    <h4><a href="service-details.html">Training and Placement</a></h4>
-                                    <div class="space16"></div>
-                                    <p>
-                                        Offering customized training programs and placement services to prepare candidates
-                                        for success in various staffing roles.
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="process_info">
+                            <span class="block txt-label text-red text-center">Step 2</span>
+                            <h5 class="mt-4 heading5 text-center">Product Sourcing</h5>
+                            <p class="mt-3 text-variant1 text-center">We source the best quality products from reliable
+                                suppliers at competitive prices.</p>
                         </div>
-                    </div>
-
-                    <div class="space50"></div>
-                    <div class="col-lg-12">
-                        <div class="text-center" data-aos="zoom-in-up" data-aos-duration="700">
-                            <a class="theme-btn1" href="{{ url('services') }}">View All Services <span><i
-                                        class="fa-solid fa-arrow-right"></i></span></a>
+                    </li>
+                    <li class="process_item flex flex-col items-center gap-7 relative group animate" style="--i: 3">
+                        <div
+                            class="process_img overflow-hidden w-[12.5rem] h-[12.5rem] p-1.5 border-2 border-transparent rounded-full duration-400 group-hover:border-red">
+                            <img src="frontend/assets/images/process/3.jpg" class="h-full object-cover rounded-full"
+                                alt="Quality Assurance">
                         </div>
-                    </div>
-                </div>
-
+                        <div class="process_info">
+                            <span class="block txt-label text-red text-center">Step 3</span>
+                            <h5 class="mt-4 heading5 text-center">Quality Assurance</h5>
+                            <p class="mt-3 text-variant1 text-center">We ensure all products meet our strict quality
+                                standards before delivery.</p>
+                        </div>
+                    </li>
+                    <li class="process_item flex flex-col items-center gap-7 relative group animate" style="--i: 4">
+                        <div
+                            class="process_img overflow-hidden w-[12.5rem] h-[12.5rem] p-1.5 border-2 border-transparent rounded-full duration-400 group-hover:border-red">
+                            <img src="frontend/assets/images/process/4.jpg" class="h-full object-cover rounded-full"
+                                alt="Timely Delivery">
+                        </div>
+                        <div class="process_info">
+                            <span class="block txt-label text-red text-center">Step 4</span>
+                            <h5 class="mt-4 heading5 text-center">Timely Delivery</h5>
+                            <p class="mt-3 text-variant1 text-center">We deliver your products on time to ensure
+                                uninterrupted operations.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <!--=====SERVICE AREA END=======-->
+        </section>
 
-        <!--=====WORK AREA START=======-->
-        <div class="work1 sp">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="work-img reveal overlay-anim">
-                            <img src="frontend/img/work/work1-image.png" alt="Recruitment Technologies Image">
-                        </div>
-                    </div>
 
-                    <div class="col-lg-6">
-                        <div class="heading1 work1-heading">
-                            <span class="span" data-aos="zoom-in-left" data-aos-duration="700">Innovative Approach</span>
-                            <h2 class="text-anime-style-3">Revolutionizing Talent Acquisition</h2>
-                            <div class="space16"></div>
-                            <p data-aos="fade-left" data-aos-duration="900">
-                                Our proprietary matching algorithms and global network ensure we connect the right talent
-                                with the right opportunities, every time.
-                            </p>
 
-                            <div class="space10"></div>
-
-                            <div data-aos="fade-left" data-aos-duration="900">
-                                <div class="work1-box">
-                                    <div>
-                                        <div class="icon">
-                                            <span><i class="fa-light fa-network-wired fs-4"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="heading1">
-                                        <h4><a href="service-details.html">Global Talent Network</a></h4>
-                                        <p>Access to pre-vetted professionals across 50+ countries in key industries and
-                                            specialties.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div data-aos="fade-left" data-aos-duration="700">
-                                <div class="work1-box">
-                                    <div>
-                                        <div class="icon">
-                                            <span><i class="fa-brands fa-codepen fs-4"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="heading1">
-                                        <h4><a href="service-details.html">AI-Driven Matching</a></h4>
-                                        <p>Advanced algorithms that analyze skills, experience, and cultural fit for perfect
-                                            placements.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div data-aos="fade-left" data-aos-duration="1100">
-                                <div class="work1-box">
-                                    <div>
-                                        <div class="icon">
-                                            <span><i class="fa-light fa-people-group fs-4"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="heading1">
-                                        <h4><a href="service-details.html">Compliance Expertise</a></h4>
-                                        <p>Ensuring all placements meet international labor laws and industry regulations.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--=====WORK AREA END=======-->
-
-        <!--=====CASE AREA START=======-->
-        <div class="case10 sp" style="background-color: #F7F5FB;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 m-auto text-center">
-                        <div class="heading1">
-                            <span class="span" data-aos="zoom-in-left" data-aos-duration="700">
-                                <img src="frontend/img/icons/span10.png" alt=""> Success Stories
-                            </span>
-                            <h2 class="text-anime-style-3">Transforming Businesses Through Talent</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space30"></div>
-                <div class="row">
-                    @if(isset($stories) && $stories->count())
-                        @foreach($stories as $story)
-                            <div class="col-lg-6" data-aos="zoom-in-up" data-aos-duration="{{ 800 + ($loop->index * 150) }}">
-                                <div class="case-box">
-                                    <div class="image">
-                                        @if($story->featured_image)
-                                            <img src="{{ asset('storage/' . $story->featured_image) }}"
-                                                alt="{{ $story->getTranslation('title', app()->getLocale()) }}">
-                                        @else
-                                            <img src="{{ asset('frontend/img/case-study/default.png') }}" alt="Default Story">
-                                        @endif
-                                    </div>
-
-                                    <div class="hover-area">
-                                        <h6>{{ $story->getTranslation('excerpt', app()->getLocale()) }}</h6>
-                                        <h3>
-                                            <a href="#">
-                                                {{ $story->getTranslation('title', app()->getLocale()) }}
-                                            </a>
-                                        </h3>
-                                        <p>{!! $story->getTranslation('content', app()->getLocale()) !!}</p>
-                                        <a href="#" class="arrow">
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="col-12 text-center">
-                            <p>No success stories available at the moment.</p>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <!--=====CASE AREA END=======-->
-        <!--=====TESTIMONIAL AREA START=======-->
+        <!-- TESTIMONIALS -->
         @if(isset($testimonials) && count($testimonials))
-            <div class="tes1 sp">
+            <section class="section testimonials sm:py-25 py-15">
                 <div class="container">
-                    <div class="row align-items-end">
-                        <div class="col-lg-6">
-                            <div class="heading1">
-                                <span class="span" data-aos="zoom-in-left" data-aos-duration="800">Client Voices</span>
-                                <h2 class="text-anime-style-3">Trusted By Industry Leaders</h2>
-                                <div class="space16"></div>
-                                <p data-aos="fade-left" data-aos-duration="800">
-                                    Hear from organizations and professionals who have experienced our staffing solutions
-                                    firsthand.
-                                </p>
+                    <div class="testimonials_inner">
+                        <div class="section_heading flex flex-wrap items-end justify-between gap-7">
+                            <div>
+                                <span class="section_tag tag bg-red animate">Testimonials</span>
+                                <h3 class="section_tit mt-4 heading3 animate">What our clients say?</h3>
+                            </div>
+                            <div class="group_btn flex items-center gap-3 animate">
+                                <button
+                                    class="btn_prev flex items-center justify-center w-12 h-12 border border-outline duration-300 hover:bg-black hover:text-white">
+                                    <span class="ph ph-caret-left text-2xl"></span>
+                                    <span class="blind">button prev</span>
+                                </button>
+                                <button
+                                    class="btn_next flex items-center justify-center w-12 h-12 border border-outline duration-300 hover:bg-black hover:text-white">
+                                    <span class="ph ph-caret-right text-2xl"></span>
+                                    <span class="blind">button next</span>
+                                </button>
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
-                            <div class="tes7-buttons" data-aos="fade-right" data-aos-duration="900">
-                                <button class="testimonial-prev-arrow1"><i class="fa-regular fa-arrow-left"></i></button>
-                                <button class="testimonial-next-arrow1"><i class="fa-regular fa-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space30"></div>
-                    <div class="row">
-                        <div class="tes1-slider" data-aos="fade-up" data-aos-duration="900">
-                            @foreach($testimonials as $testimonial)
-                                            <div class="single-slider">
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <ul class="stars">
-                                                            @for($i = 1; $i <= $testimonial->rating; $i++)
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            @endfor
-                                                        </ul>
-
-                                                        <div class="pera">
-                                                            <p>
-                                                                "{{ \Illuminate\Support\Str::limit(
-                                    $testimonial->getTranslation('message', app()->getLocale()),
-                                    120,
-                                    '...'
-                                ) }}"
-                                                            </p>
-                                                        </div>
-
-                                                        <div class="bottom-heading">
-                                                            <h4>
-                                                                <a href="#">
-                                                                    {{ $testimonial->getTranslation('name', app()->getLocale()) }}
-                                                                </a>
-                                                            </h4>
-                                                            <p>
-                                                                {{ $testimonial->getTranslation('designation', app()->getLocale()) }}
-                                                                @if($testimonial->getTranslation('company', app()->getLocale()))
-                                                                    , {{ $testimonial->getTranslation('company', app()->getLocale()) }}
-                                                                @endif
-                                                            </p>
-                                                        </div>
+                        <div class="testimonials_content relative w-full lg:mt-12 mt-9">
+                            <div class="testimonials_swiper_two swiper">
+                                <ul class="swiper-wrapper">
+                                    @foreach($testimonials as $testimonial)
+                                        <li class="swiper-slide p-7 border border-outline duration-300 hover:border-red">
+                                            <div class="testimonials_item animate" style="--i: 1">
+                                                <ul class="rating flex">
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        <li
+                                                            class="ph-fill ph-star text-xl @if($i > $testimonial->rating) text-variant2 @endif">
+                                                        </li>
+                                                    @endfor
+                                                </ul>
+                                                <p class="testimonials_desc mt-3 body2 line-clamp-4">
+                                                    "{{ \Illuminate\Support\Str::limit($testimonial->getTranslation('message', app()->getLocale()), 120, '...') }}"
+                                                </p>
+                                                <div class="flex items-center gap-4 mt-6 pt-6 border-t border-outline">
+                                                    <div
+                                                        class="testimonials_img flex-shrink-0 overflow-hidden w-15 h-15 rounded-full">
+                                                        @if($testimonial->image)
+                                                            <img src="{{ asset('storage/' . $testimonial->image) }}"
+                                                                class="h-full object-cover"
+                                                                alt="{{ $testimonial->getTranslation('name', app()->getLocale()) }}">
+                                                        @else
+                                                            <img src="{{ asset('frontend/assets/images/team/default.png') }}"
+                                                                class="h-full object-cover" alt="Default Testimonial">
+                                                        @endif
                                                     </div>
-
-                                                    <div class="col-md-4">
-                                                        <div class="tes1-image d-flex justify-content-center align-items-center"
-                                                            style="height:200px; overflow:hidden; border-radius:10px;">
-                                                            @if($testimonial->image)
-                                                                <img src="{{ asset('storage/' . $testimonial->image) }}"
-                                                                    alt="{{ $testimonial->getTranslation('name', app()->getLocale()) }}"
-                                                                    style="max-height:100%; max-width:100%; object-fit:cover;">
-                                                            @else
-                                                                <img src="{{ asset('frontend/img/testimonial/default.png') }}"
-                                                                    alt="Default Testimonial"
-                                                                    style="max-height:100%; max-width:100%; object-fit:cover;">
+                                                    <div class="testimonials_author">
+                                                        <strong
+                                                            class="testimonials_name heading6">{{ $testimonial->getTranslation('name', app()->getLocale()) }}</strong>
+                                                        <span class="testimonials_address block mt-1 text-variant1">
+                                                            {{ $testimonial->getTranslation('designation', app()->getLocale()) }}
+                                                            @if($testimonial->getTranslation('company', app()->getLocale()))
+                                                                , {{ $testimonial->getTranslation('company', app()->getLocale()) }}
                                                             @endif
-                                                        </div>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
-                            @endforeach
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         @endif
-        <!--=====TESTIMONIAL AREA END=======-->
+
+        <!-- COUNTER -->
+        <section class="section counter">
+            <div class="container">
+                <ul class="counter_list grid xl:grid-cols-4 grid-cols-2 gap-10 sm:py-25 py-15 border-t border-outline">
+                    <li class="counter_item animate" style="--i: 1">
+                        <h2 class="heading1"><span id="counter_number1" class="counter_number">1000</span>+</h2>
+                        <p class="mt-4 body2 text-variant1">Products across multiple categories to meet diverse industrial
+                            needs.</p>
+                    </li>
+                    <li class="counter_item animate" style="--i: 2">
+                        <h2 class="heading1"><span id="counter_number2" class="counter_number">500</span>+</h2>
+                        <p class="mt-4 body2 text-variant1">Satisfied clients across Saudi Arabia and beyond.</p>
+                    </li>
+                    <li class="counter_item animate" style="--i: 3">
+                        <h2 class="heading1"><span id="counter_number3" class="counter_number">98</span>%</h2>
+                        <p class="mt-4 body2 text-variant1">On-time delivery rate ensuring uninterrupted operations.</p>
+                    </li>
+                    <li class="counter_item animate" style="--i: 4">
+                        <h2 class="heading1"><span id="counter_number4" class="counter_number">24</span>/7</h2>
+                        <p class="mt-4 body2 text-variant1">Customer support to address your queries and requirements.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FORM REQUEST -->
+        <section class="section form_request sm:py-25 py-15 bg-dark">
+            <div class="container flex items-center max-xl:flex-col gap-30 gap-y-14">
+                <div class="form_request_content w-full text-white">
+                    <span class="section_tag tag bg-white animate">Contact US</span>
+                    <h3 class="section_tit mt-4 heading3 animate">Get in Touch with Us</h3>
+                    <p class="section_desc lg:mt-5 mt-3 body2 animate">Reach out today for expert guidance, product
+                        inquiries, or customized sourcing solutions. We're here to support your industrial supply needs!</p>
+                    <ul class="list_feature grid sm:grid-cols-2 gap-14 gap-y-4 mt-5">
+                        <li class="flex items-center gap-3 animate" style="--i: 1">
+                            <span class="ph ph-check text-xl"></span>
+                            <span>Expert Procurement Guidance</span>
+                        </li>
+                        <li class="flex items-center gap-3 animate" style="--i: 2">
+                            <span class="ph ph-check text-xl"></span>
+                            <span>Customized Sourcing Solutions</span>
+                        </li>
+                        <li class="flex items-center gap-3 animate" style="--i: 3">
+                            <span class="ph ph-check text-xl"></span>
+                            <span>Quality Products at Competitive Prices</span>
+                        </li>
+                        <li class="flex items-center gap-3 animate" style="--i: 4">
+                            <span class="ph ph-check text-xl"></span>
+                            <span>Timely Delivery Guarantee</span>
+                        </li>
+                    </ul>
+                    <ul class="list_info grid md:grid-cols-3 gap-8 mt-10 pt-10 border-t border-white border-opacity-10">
+                        <li class="item flex gap-3 animate" style="--i: 1">
+                            <span
+                                class="flex flex-shrink-0 items-center justify-center w-15 h-15 rounded-full bg-white bg-opacity-10">
+                                <span class="ph ph-map-pin text-3xl"></span>
+                            </span>
+                            <div>
+                                <span class="caption1 text-variant2">Our Location</span>
+                                <p class="mt-1">Jeddah, Saudi Arabia</p>
+                            </div>
+                        </li>
+                        <li class="item flex gap-3 animate" style="--i: 2">
+                            <span
+                                class="flex flex-shrink-0 items-center justify-center w-15 h-15 rounded-full bg-white bg-opacity-10">
+                                <span class="ph ph-envelope-simple text-3xl"></span>
+                            </span>
+                            <div>
+                                <span class="caption1 text-variant2">Email Us</span>
+                                <p class="mt-1">info@maasqais.com</p>
+                            </div>
+                        </li>
+                        <li class="item flex gap-3 animate" style="--i: 3">
+                            <span
+                                class="flex flex-shrink-0 items-center justify-center w-15 h-15 rounded-full bg-white bg-opacity-10">
+                                <span class="ph ph-phone-call text-3xl"></span>
+                            </span>
+                            <div>
+                                <span class="caption1 text-variant2">Call Us</span>
+                                <p class="mt-1">+966 12 345 6789</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form_request_form flex-shrink-0 relative xl:w-5/12 w-full p-8 bg-white animate animate_left"
+                    style="--i: 3">
+                    <h4 class="heading4">Request A Quote</h4>
+                    <p class="mt-3 text-variant1">We'll work with you to provide the best industrial supply solutions that
+                        meet your needs and budget.</p>
+                    <form class="form grid sm:grid-cols-2 grid-cols-1 gap-5 w-full mt-6">
+                        <div class="form_group w-full">
+                            <input type="text" name="name" class="form_input w-full py-3 px-4 border border-outline rounded"
+                                placeholder="Your Name" required>
+                        </div>
+                        <div class="form_group w-full">
+                            <input type="tel" name="phone" pattern="\d*"
+                                class="form_input w-full py-3 px-4 border border-outline rounded" placeholder="Phone Number"
+                                required>
+                        </div>
+                        <div class="form_group w-full">
+                            <input type="email" name="email"
+                                class="form_input w-full py-3 px-4 border border-outline rounded"
+                                placeholder="Email Address" required>
+                        </div>
+                        <div class="form_group form_select w-full">
+                            <select name="product_category" class="w-full py-3 px-4 border border-outline rounded" required>
+                                <option selected disabled value>Product Category</option>
+                                <option value="Industrial Tools">Industrial Tools</option>
+                                <option value="Safety Equipment">Safety Equipment</option>
+                                <option value="Maintenance Supplies">Maintenance Supplies</option>
+                                <option value="Industrial Components">Industrial Components</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="ph ph-caret-down arrow_down text-xl"></span>
+                        </div>
+                        <div class="form_group sm:col-span-2 w-full">
+                            <textarea name="message" class="form_input w-full py-3 px-4 border border-outline rounded"
+                                rows="3" placeholder="Your Requirements" required></textarea>
+                        </div>
+                        <div class="form_group sm:col-span-2 mt-1 w-full">
+                            <button type="submit" class="btn w-full bg-red text-center">Request Quote</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="section video animate">
+            <div class="video_inner flex items-center justify-center lg:h-[35rem] h-[20rem]">
+                <h3 class="blind">Video</h3>
+                <img src="frontend/assets/images/components/bg_video4.jpg"
+                    class="absolute top-0 left-0 z-[-1] w-full h-full object-cover" alt="video">
+                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+                    <source src="frontend/assets/images/other/video4.mp4" type="video/mp4">
+                </video>
+                <button class="btn_play js_btn_open_popup absolute w-full h-full" data-popup="popup_video">
+                    <span class="blind">button play video</span>
+                </button>
+            </div>
+        </section>
 
         @if(isset($blogs) && count($blogs))
-            <div class="blog1 sp">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 m-auto text-center">
-                            <div class="heading1">
-                                <span class="span" data-aos="zoom-in-left" data-aos-duration="800">Industry Insights</span>
-                                <h2 class="text-anime-style-3"> Latest Trends &amp; Strategies</h2>
-                                <div class="space16"></div>
-                                <p data-aos="fade-up" data-aos-duration="800">
-                                    Stay informed with our expert analysis on workforce trends, recruitment strategies, and
-                                    industry developments across healthcare, technology, and engineering sectors.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- LATEST NEWS -->
+            <section class="section blog sm:py-25 py-15">
+                <div class="container flex flex-col items-center">
+                    <span class="section_tag tag animate">Industry Insights</span>
+                    <h3 class="section_tit mt-4 heading3 text-center animate">Latest Industrial News & Tips</h3>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 text-center animate">
+                        Stay updated with the latest trends, insights, and tips for industrial supplies and procurement.
+                    </p>
 
-                    <div class="space30"></div>
-                    <div class="row">
+                    <ul class="blog_list grid lg:grid-cols-2 gap-7.5 w-full lg:mt-12 mt-9">
                         @foreach($blogs as $blog)
-                            <div class="col-lg-6">
-                                <div class="blog1-box overlay-anim" data-aos="zoom-in-up"
-                                    data-aos-duration="{{ 800 + ($loop->index * 100) }}">
-                                    <div class="image">
-                                        <img src="{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('frontend/img/blog/default.png') }}"
+                            @if($loop->first)
+                                <!-- Featured Blog -->
+                                <li class="blog_item flex flex-col gap-6 animate animate_right">
+                                    <a href="#" class="blog_thumb block overflow-hidden group">
+                                        <img src="{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
+                                            class="duration-400 group-hover:scale-110"
                                             alt="{{ $blog->getTranslation('title', app()->getLocale()) }}">
-                                    </div>
-                                    <div class="heading-area">
-                                        <div class="tags">
-                                            <a href="#"><img src="{{ asset('frontend/img/icons/date.png') }}" alt="">
-                                                {{ $blog->created_at->format('M d, Y') }}</a>
-                                            <a href="#"><img src="{{ asset('frontend/img/icons/user.png') }}" alt=""> By
-                                                {{ $blog->author ?? 'Admin' }}</a>
+                                    </a>
+                                    <div class="blog_info">
+                                        <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
+                                            <span class="blog_date">{{ $blog->created_at->format('F d, Y') }}</span>
+                                            <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
+                                            <a href="#" class="blog_cate duration-300 hover:underline hover:text-black">
+                                                {{ $blog->category->name ?? 'Uncategorized' }}
+                                            </a>
                                         </div>
-                                        <div class="heading1">
-                                            <h4>
-                                                <a href="#">
-                                                    {{ $blog->getTranslation('title', app()->getLocale()) }}
-                                                </a>
-                                            </h4>
-                                            <div class="space16"></div>
-                                            <p>{!! Str::limit(strip_tags($blog->getTranslation('content', app()->getLocale())), 150) !!}
+                                        <a href="#" class="block mt-4">
+                                            <strong class="blog_tit line-clamp-2 heading4 duration-300 hover:text-orange">
+                                                {{ $blog->getTranslation('title', app()->getLocale()) }}
+                                            </strong>
+                                            <p class="blog_tit mt-5 line-clamp-2 text-variant1">
+                                                {!! Str::limit(strip_tags($blog->getTranslation('content', app()->getLocale())), 150) !!}
                                             </p>
-                                            <div class="blog1-border"></div>
-                                            <a href="#" class="learn">Read More <span><i
-                                                        class="fa-solid fa-arrow-right"></i></span></a>
-                                        </div>
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
+                                </li>
+                            @else
+                                <!-- Other Blogs -->
+                                <li>
+                                    <ul class="flex flex-col sm:gap-6 gap-7.5">
+                                        @foreach($blogs->slice(1) as $index => $otherBlog)
+                                            <li class="blog_item flex max-sm:flex-col sm:items-center gap-6 animate animate_left"
+                                                style="--i: {{ $index + 1 }}">
+                                                <a href="#" class="blog_thumb block flex-shrink-0 overflow-hidden sm:w-56 group">
+                                                    <img src="{{ $otherBlog->featured_image ? asset('storage/' . $otherBlog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
+                                                        class="duration-400 group-hover:scale-110"
+                                                        alt="{{ $otherBlog->getTranslation('title', app()->getLocale()) }}">
+                                                </a>
+                                                <div class="blog_info">
+                                                    <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
+                                                        <span class="blog_date">{{ $otherBlog->created_at->format('F d, Y') }}</span>
+                                                        <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
+                                                        <a href="#" class="blog_cate duration-300 hover:underline hover:text-black">
+                                                            {{ $otherBlog->category->name ?? 'Uncategorized' }}
+                                                        </a>
+                                                    </div>
+                                                    <a href="#" class="blog_tit mt-4 line-clamp-2 heading5 duration-300 hover:text-orange">
+                                                        {{ $otherBlog->getTranslation('title', app()->getLocale()) }}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                @break
+                            @endif
                         @endforeach
-                    </div>
+                    </ul>
                 </div>
-            </div>
+            </section>
         @endif
 
-
-        <!--=====CONTACT AREA START=======-->
-        <div class="contact10 sp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 m-auto text-center">
-                        <div class="heading1">
-                            <span class="span" data-aos="zoom-in-left" data-aos-duration="700"><img
-                                    src="frontend/img/icons/span10.png" alt=""> Contact us</span>
-                            <h2 class="text-anime-style-3">Let's Start The Conversation</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space30"></div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="contact-from">
-                            <h3>Send Us A Message</h3>
-                            <p>Our response time is within 30 minutes during business hours</p>
-                            <div class="form-area">
-                                @if(session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
-                                @if(session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-
-                                <form action="{{ route('contact.send') }}" method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <!-- First Name -->
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="text" name="firstName" value="{{ old('firstName') }}"
-                                                    placeholder="First Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="text" name="lastName" value="{{ old('lastName') }}"
-                                                    placeholder="Last Name" required>
-                                            </div>
-                                        </div>
-
-                                        <!-- Phone Number -->
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="text" name="number" value="{{ old('number') }}"
-                                                    placeholder="Phone Number" required>
-                                            </div>
-                                        </div>
-
-                                        <!-- Email Address -->
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="email" name="email" value="{{ old('email') }}"
-                                                    placeholder="Email Address" required>
-                                            </div>
-                                        </div>
-
-                                        <!-- Appointment Date -->
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="text" name="date" value="{{ old('date') }}"
-                                                    placeholder="Date (MM/DD/YYYY)" required>
-                                            </div>
-                                        </div>
-
-                                        <!-- Service Type -->
-                                        <div class="col-md-6">
-                                            <div class="single-input">
-                                                <input type="text" name="services" value="{{ old('services') }}"
-                                                    placeholder="Service Type" required>
-                                            </div>
-                                        </div>
-
-                                        <!-- Message -->
-                                        <div class="col-md-12">
-                                            <div class="single-input">
-                                                <textarea name="message" rows="5" placeholder="Message"
-                                                    required>{{ old('message') }}</textarea>
-
-                                            </div>
-                                            <div class="space30"></div>
-
-                                            <!-- Submit Button -->
-                                            <div class="button-area">
-                                                <button class="theme-btn1" type="submit">Submit Now
-                                                    <span><i class="fa-solid fa-arrow-right"></i></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="contact-map">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.4895796404458!2d-72.86862152446955!3d41.3199663001753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d73cf6964995%3A0xc978753d151780ee!2s135%20Old%20Foxon%20Rd%20%232%2C%20East%20Haven%2C%20CT%2006513%2C%20USA!5e0!3m2!1sen!2sin!4v1748959930120!5m2!1sen!2sin"
-                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--=====CONTACT AREA END=======-->
-
-        <!--===== CTA AREA START =======-->
-        <div class="cta8 d-none" style="background-image: url(frontend/img/bg/cta10-bg.jpg);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 m-auto text-center">
-                        <div class="heading6-w">
-                            <h2>Optimize Your Workforce Strategy Today</h2>
-                            <div class="space16"></div>
-                            <p>Subscribe to receive the latest staffing insights, industry reports, and exclusive offers
-                                directly to your inbox.</p>
-
-                            <div class="form-area">
-                                <form action="#">
-                                    <input type="email" placeholder="Your Business Email">
-                                    <div class="button">
-                                        <button class="theme-btn1" type="submit">Subscribe Now <span><i
-                                                    class="fa-solid fa-arrow-right"></i></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
-
 @endsection

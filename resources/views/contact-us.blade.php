@@ -1,237 +1,126 @@
 @extends('layouts.main')
 @include('partials.pages.title-meta-tags')
 @section('content')
-    <div class="common-hero"
-        style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 100px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 m-auto text-center">
-                    <div class="main-heading" style="color: white;">
-                        <h1>Contact Us</h1>
-                        <div class="pages-intro" style="color: white;">
-                            <a href="index.html" style="color: white;">Home</a>
-                            <span><i class="fa-regular fa-angle-right"></i></span>
-                            <p style="display: inline;">Contact</p>
-                        </div>
-                    </div>
+    <section class="section breadcrumb flex items-center h-[320px] relative">
+        <div class="breadcrumb_bg absolute top-0 left-0 w-full h-full pointer-events-none">
+            <img src="frontend/assets/images/breadcrumb/blog.jpg" alt="Contact Us" class="h-full object-cover">
+        </div>
+        <div class="container relative text-white">
+            <ul class="breadcrumb_nav flex items-center gap-1 animate">
+                <li class="flex items-center">
+                    <a href="index.html" class="breadcrumb_link caption1 duration-300 hover:underline">Home</a>
+                </li>
+                <li class="flex items-center">
+                    <span class="ph ph-caret-right text-xs opacity-50"></span>
+                    <a href="#!" class="breadcrumb_link pl-1 caption1 opacity-50">Contact Us</a>
+                </li>
+            </ul>
+            <h2 class="section_tit mt-3 heading2 animate" style="--i: 2">Get in Touch with Us</h2>
+            <p class="section_desc mt-2 body2 animate" style="--i: 3">
+                Have questions or need assistance? Our team is ready to help you. Fill out the form below or reach us
+                directly via email or phone.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- FORM CONTACT -->
+    <section class="section form_contact sm:py-25 py-15">
+        <div class="container flex items-center max-xl:flex-col gap-[9.5rem] gap-y-14">
+            <div class="form_contact_content w-full">
+                <span class="section_tag tag animate">Contact Us</span>
+                <h3 class="section_tit mt-4 heading3 animate">Get in Touch with Us</h3>
+                <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">Reach out today for expert guidance,
+                    service inquiries, or personalized solutions. We're here to support your project every step of the way!
+                </p>
+                <ul class="list_feature flex flex-col gap-3 mt-7 pt-7 border-t border-outline">
+                    <li class="flex items-center gap-3 animate">
+                        <span class="ph ph-map-pin text-2xl"></span>
+                        <span>Jeddah, Saudi Arabic</span>
+                    </li>
+                    <li class="flex items-center gap-3 animate">
+                        <span class="ph ph-envelope text-2xl"></span>
+                        <span>info@maasqais.com</span>
+                    </li>
+                    <li class="flex items-center gap-3 animate">
+                        <span class="ph ph-phone-call text-2xl"></span>
+                        <span>1-555-678-8888</span>
+                    </li>
+                </ul>
+                <div class="btn_area animate">
+                    <a href="https://maps.app.goo.gl/Z8zKdiKbpcEdV6MV8"
+                        class="inline-flex gap-1 mt-7 duration-300 hover:text-orange" target="_blank">
+                        <strong class="txt-button underline underline-offset-4">Google map</strong>
+                        <span class="ph-bold ph-arrow-right text-xl"></span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--=====HERO AREA END=======-->
-
-    <!--=====CONTACT AREA START=======-->
-    <div class="contact-page sp">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="heading1">
-                        <span class="span">Contact Information</span>
-                        <h2>Connect With Our Leadership</h2>
+            <div class="form_contact_form flex-shrink-0 relative xl:w-1/2 w-full sm:p-10 p-7 bg-surface animate animate_left"
+                style="--i: 2">
+                <h4 class="heading4">Get a Free Consultation</h4>
+                <p class="mt-3 text-variant1">Use the form below to get in touch with the sales team</p>
+                @if (session('success'))
+                    <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
+                        {{ session('success') }}
                     </div>
-                    <div class="contact-page-box">
-                        <div class="row">
-                            <!-- Phone Section -->
-                            <div class="col-lg-2">
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <i class="fas fa-phone-alt fa-2x"></i>
-                                    </div>
-                                    <div class="heading1">
-                                        <p>Give Us a Call</p>
-                                        <h4><a href="tel:123-456-7890">123-456-7890</a></h4>
-                                    </div>
-                                </div>
-                            </div>
+                @endif
 
-                            <!-- CEO Section -->
-                            <div class="col-lg-5">
-                                <div class="contact-box contact-box2">
-                                    <div class="icon">
-                                        <i class="fas fa-user-tie fa-2x"></i>
-                                    </div>
-                                    <div class="heading1">
-                                        <p>Ammar Ahmed Khan</p>
-                                        <h4><i class="fas fa-envelope"></i> <a
-                                                href="mailto:ammarahmed.khan@1globalsolutions.com">ammarahmed.khan@1globalsolutions.com</a>
-                                        </h4>
-                                        <h5><i class="fas fa-briefcase"></i> CEO</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Director Section -->
-                            <div class="col-lg-5">
-                                <div class="contact-box contact-box2">
-                                    <div class="icon">
-                                        <i class="fas fa-user-tie fa-2x"></i>
-                                    </div>
-                                    <div class="heading1">
-                                        <p>Mubeen Mohammed</p>
-                                        <h4><i class="fas fa-envelope"></i> <a
-                                                href="mailto:mubeen.mohammed@1globalsolutions.com">mubeen.mohammed@1globalsolutions.com</a>
-                                        </h4>
-                                        <h5><i class="fas fa-briefcase"></i> Director</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- End row -->
+                @if (session('error'))
+                    <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
+                        {{ session('error') }}
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                @endif
 
-    <div class="contact-page sp">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="heading1">
-                        <span class="span">Contact Us</span>
-                        <h2>Get in Touch Let's Start the Conversation</h2>
-                        <div class="space16"></div>
-                        <p>We're here to help you find the right staffing solutions for your needs. Whether you're a company
-                            looking to hire top talent or a candidate seeking your next career opportunity,</p>
+                @if ($errors->any())
+                    <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
+                        <ul class="list-disc pl-5">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                @endif
 
-                    <div class="contact-page-box ">
-                        <div class="row">
-                            <!-- Phone Section -->
-                            <div class="col-lg-6">
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <i class="fas fa-phone-alt fa-2x"></i>
-                                    </div>
-                                    <div class="heading1">
-                                        <p>Give Us a Call</p>
-                                        <h4><a href="tel:123-456-7890">123-456-7890</a></h4>
-                                    </div>
-                                </div>
-                            </div>
+                <form class="form grid sm:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" method="POST"
+                    action="{{ route('contact.send') }}">
+                    @csrf
 
-                            <!-- Email Section -->
-                            <div class="col-lg-6">
-                                <div class="contact-box contact-box2">
-                                    <div class="icon">
-                                        <i class="fas fa-envelope fa-2x"></i>
-                                    </div>
-                                    <div class="heading1">
-                                        <p>Send Me Mail</p>
-                                        <h4><a href="mailto:info@1globalsolutions.com">info@1globalsolutions.com</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
+                    <div class="form_group w-full">
+                        <input type="text" name="name" class="form_input w-full py-3 px-4 border border-outline bg-white"
+                            placeholder="Your Name (public) *" required>
                     </div>
-
-                </div>
-
-
-                <div class="col-lg-6">
-                    <div class="contact1-form">
-                        <div class="heading1">
-                            <h3>Send us a Message</h3>
-                            <div class="space16"></div>
-                            <p>Feel free to reach out to us with any questions, inquiries, or staffing requirements you may
-                                have. Our experienced</p>
-                        </div>
-                        <div class="space10"></div>
-
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single-input">
-                                        <input type="text" placeholder="First Name">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="single-input">
-                                        <input type="text" placeholder="Last Name">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="single-input">
-                                        <input type="email" placeholder="Email">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="single-input">
-                                        <input type="number" placeholder="Phone">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="single-input">
-                                        <input type="text" placeholder="Subject">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="single-input">
-                                        <textarea rows="4" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="button">
-                                        <button class="theme-btn1">Submit Now <span><i
-                                                    class="fa-solid fa-arrow-right"></i></span></button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
+                    <div class="form_group w-full">
+                        <input type="email" name="email" class="form_input w-full py-3 px-4 border border-outline bg-white"
+                            placeholder="Your email (private) *" required>
                     </div>
-                </div>
+                    <div class="form_group form_select col-span-full w-full">
+                        <select name="services" class="w-full py-3 px-4 border border-outline bg-white" required>
+                            <option selected disabled value>Choose Services</option>
+                            <option value="HVAC Maintenance">HVAC Maintenance</option>
+                            <option value="AC Installation">AC Installation</option>
+                            <option value="Heating Repair">Heating Repair</option>
+                            <option value="Emergency Repair">Emergency Repair</option>
+                        </select>
+                        <span class="ph ph-caret-down arrow_down text-xl"></span>
+                    </div>
+                    <div class="form_group sm:col-span-2 w-full">
+                        <textarea name="message" class="form_input w-full py-3 px-4 border border-outline bg-white" rows="4"
+                            placeholder="Write your comment here *" required></textarea>
+                    </div>
+                    <div class="form_group mt-2 w-full">
+                        <button type="submit" class="btn">Make An Appointment</button>
+                    </div>
+                </form>
 
             </div>
         </div>
-    </div>
-
-
-    <!--=====CONTACT AREA END=======-->
-
-    <div class="contact-map-page">
+    </section>
+    <!-- MAP -->
+    <section class="section map h-[520px]">
+        <h3 class="blind">Map</h3>
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.4895796404458!2d-72.86862152446955!3d41.3199663001753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d73cf6964995%3A0xc978753d151780ee!2s135%20Old%20Foxon%20Rd%20%232%2C%20East%20Haven%2C%20CT%2006513%2C%20USA!5e0!3m2!1sen!2sin!4v1748959930120!5m2!1sen!2sin"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d475325.03137566603!2d38.881491443934955!3d21.44980016391344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d01fb1137e59%3A0xe059579737b118db!2sJeddah%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1758349470198!5m2!1sen!2sin"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-
-    <!--===== CTA AREA START =======-->
-
-    <div class="cta">
-        <div class="container">
-            <div class="row cta-border align-items-center">
-                <div class="col-lg-6">
-                    <div class="heading1-w">
-                        <h2>Ready to Power up your Savings and Reliability?</h2>
-                        <div class="space16"></div>
-                        <p>Feel free to customize this paragraph to better reflect the <br> specific services offered by
-                            your IT solution & the unique </p>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="subscribe-area">
-                        <form action="#">
-                            <input type="email" placeholder="Email Address">
-                            <div class="button">
-                                <button type="submit" class="theme-btn1">Subscribe Now <span><i
-                                            class="fa-solid fa-arrow-right"></i></span></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--===== CTA AREA START =======-->
+    </section>
 @endsection

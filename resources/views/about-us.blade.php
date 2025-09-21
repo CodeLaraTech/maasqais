@@ -1,577 +1,436 @@
 @extends('layouts.main')
 @section('content')
-    <!--=====HERO AREA START =======-->
+    <section class="section breadcrumb flex items-center h-[320px] relative">
+        <div class="breadcrumb_bg absolute top-0 left-0 w-full h-full pointer-events-none">
+            <img src="frontend/assets/images/breadcrumb/about.jpg" alt="About Us" class="h-full object-cover">
+        </div>
+        <div class="container relative text-white">
+            <ul class="breadcrumb_nav flex items-center gap-1 animate">
+                <li class="flex items-center">
+                    <a href="index.html" class="breadcrumb_link caption1 duration-300 hover:underline">Home</a>
+                </li>
+                <li class="flex items-center">
+                    <span class="ph ph-caret-right text-xs opacity-50"></span>
+                    <a href="#!" class="breadcrumb_link pl-1 caption1 opacity-50">About Us</a>
+                </li>
+            </ul>
+            <h2 class="section_tit mt-3 heading2 animate" style="--i: 2">About Us</h2>
+        </div>
+    </section>
+    <!-- ABOUT -->
+    <section class="section about sm:py-25 py-15">
+        <div class="container flex max-lg:flex-col items-center xl:gap-20 gap-10">
+            <div class="about_img flex-shrink-0 relative lg:w-[49%] sm:w-2/3 w-full pb-15 animate animate_right">
+                <img src="frontend/assets/images/components/about3_1.jpg" class="w-2/3" alt="Maas Qais Trading Est.">
+                <div class="about_banner absolute xl:top-13 top-6 xl:right-4 right-0 sm:py-7.5 py-4 sm:px-10 px-6 bg-orange text-white animate animate_left"
+                    style="--i: 3">
+                    <h2 class="heading2 text-center">Trusted</h2>
+                    <p class="block mt-1 text-center">Procurement Partner</p>
+                </div>
+                <div class="absolute right-0 bottom-0 w-[54%] border-t-[20px] border-l-[20px] border-white animate"
+                    style="--i: 2">
+                    <img src="frontend/assets/images/components/about3_2.jpg" alt="Maas Qais Trading Est.">
+                </div>
+            </div>
+            <div class="about_content">
+                <span class="section_tag tag bg-orange animate">About Us</span>
+                <h3 class="section_tit mt-4 heading3 animate">Your Trusted Procurement Partner for Industrial Supplies</h3>
+                <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                    We at Maas Qais Trading Est. are focused on becoming your trusted procurement partner for industrial
+                    supplies.
+                    Our mission is to support customers with:
+                </p>
+                <ul class="about_benefit flex max-sm:flex-col gap-7.5 gap-y-5 mt-5">
+                    <li class="animate" style="--i: 1">
+                        <span class="ph ph-trophy text-6xl"></span>
+                        <strong class="block mt-5 heading6">Best Quality Products</strong>
 
-    <div class="common-hero"
-        style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 100px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 m-auto text-center">
-                    <div class="main-heading">
-                        <h1  style="color: white;">About Us</h1>
-                        <div class="pages-intro">
-                            <a href="{{url('/')}}" style="color: white;">Home</a>
-                            <span><i class="fa-regular fa-angle-right"></i></span>
-                            <p style="display: inline;" >About Us</p>
-                        </div>
-                    </div>
+                    </li>
+                    <li class="animate" style="--i: 2">
+                        <span class="ph ph-currency-dollar text-6xl"></span>
+                        <strong class="block mt-5 heading6">Right Price</strong>
+
+                    </li>
+                    <li class="animate" style="--i: 3">
+                        <span class="ph ph-truck text-6xl"></span>
+                        <strong class="block mt-5 heading6">On-Time Delivery</strong>
+
+                    </li>
+                </ul>
+                <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                    Occasionally, our customers require items outside our defined categories — and we make it our goal to
+                    source them, saving your time and ensuring smooth operations.
+                </p>
+                <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                    Looking forward to building long-term business relationships, we welcome you to share your requirements
+                    at
+                    <a href="mailto:info@maasqais.com" class="text-orange underline">info@maasqais.com</a>. Our team will
+                    get back to you with the best sources for your needs.
+                </p>
+                <div class="btn_area animate">
+                    <a href="about-us.html" class="btn mt-10 bg-orange">Learn More</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- WHY CHOOSE US -->
+    <section class="section choose_us sm:py-25 py-15">
+        <div class="container flex flex-col items-center">
+            <span class="section_tag tag w-fit animate">WHY CHOOSE US</span>
+            <h3 class="section_tit mt-4 heading3 text-center animate">Why Choose Us</h3>
+            <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 text-center animate">
+                We go the extra mile to ensure your satisfaction with every step of the process.
+            </p>
+            <div class="choose_us_content flex max-lg:flex-col items-center gap-15 mt-12">
 
-    <!--=====HERO AREA END=======-->
+                <ul class="choose_us_list flex flex-col lg:gap-12 gap-8 max-lg:w-full">
+                    <li class="choose_us_item flex flex-col lg:items-end animate animate_right">
+                        <span class="icon-box text-6xl"></span>
+                        <strong class="block mt-5 heading5">1000+ Products</strong>
+                        <p class="mt-3 text-variant1 lg:text-right">We offer 1000+ products across multiple categories to
+                            meet your diverse needs.</p>
+                    </li>
+                    <li class="line flex-shrink-0 w-full h-px bg-outline"></li>
+                    <li class="choose_us_item flex flex-col lg:items-end animate animate_right">
+                        <span class="icon-shield-check text-6xl"></span>
+                        <strong class="block mt-5 heading5">Trusted Quality</strong>
+                        <p class="mt-3 text-variant1 lg:text-right">Our products are of trusted quality with competitive
+                            pricing for reliable performance.</p>
+                    </li>
+                </ul>
 
-    <!--=====ABOUT AREA START=======-->
-
-    <div class="about-page-sec1 sp">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about3-images">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="image overlay-anim">
-                                    <img src="frontend/img/about/about3-img1.png" alt="">
-                                </div>
-                                <div class="conter-box conter-box1">
-                                    <h3><span class="counter">3500</span>+</h3>
-                                    <p>Candidate hired</p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="conter-box conter-box2">
-                                    <h3><span class="counter">50</span>+</h3>
-                                    <p>Companies</p>
-                                </div>
-                                <div class="image overlay-anim">
-                                    <img src="frontend/img/about/about3-img2.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="choose_us_bg flex-shrink-0 lg:w-1/3 sm:w-3/4 w-full">
+                    <img src="frontend/assets/images/components/about_us.png" alt="about_us">
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="heading1 about3-heading">
-                        <span class="span">About Us</span>
-                        <h2>Our Story Connecting Talent, Powering Success</h2>
-                        <div class="space16"></div>
-                        <p>Our team of industry experts is dedicated to understanding your unique needs and delivering
-                            tailored
-                            solutions that propel your business forward.</p>
-
-                        <div class="about3-icon-box">
-                            <div class="">
-                                <div class="icon">
-                                    <img src="frontend/img/icons/about3-icon1.png" alt="">
-                                </div>
-                            </div>
-                            <div class="heading1">
-                                <h5><a href="#">Empowering Careers, Driving Growth</a></h5>
-                                <p>we are your strategic partner in talent acquisition. With a steadfast commitment to
-                                    excellence</p>
-                            </div>
-                        </div>
-
-                        <div class="about3-icon-box">
-                            <div class="">
-                                <div class="icon">
-                                    <img src="frontend/img/icons/about3-icon2.png" alt="">
-                                </div>
-                            </div>
-                            <div class="heading1">
-                                <h5><a href="#">Leaders in Staffing Excellence</a></h5>
-                                <p>Discover the difference with Your Agency Name and unlock new possibilities for growth
-                                </p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--=====ABOUT AREA END=======-->
-
-    <!--=====SERVICE AREA START=======-->
-
-    <div class="service1 sp">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 m-auto text-center">
-                    <div class="heading1-w">
-                        <span class="span">Our Service </span>
-                        <h2>Tailored Solutions for Your Hiring Needs</h2>
-                        <div class="space16"></div>
-                        <p> With our proven track record and commitment to excellence, we're here to support your <br>
-                            organization's growth and help you achieve your hiring goals.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="space30"></div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service1-box">
-                        <div class="image overlay-anim">
-                            <img src="frontend/img/service/service1-img1.png" alt="">
-                        </div>
-                        <div class="hover-area">
-                            <div class="icon">
-                                <img src="frontend/img/icons/service1-icon1.png" alt="">
-                            </div>
-                            <div class="space16"></div>
-                            <div class="heading1-w">
-                                <h4><a href="service-details.html">Executive Search Services</a></h4>
-                                <div class="space16"></div>
-                                <p>Whether you're looking for temporary staffing, direct hire placements, </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service1-box active">
-                        <div class="image overlay-anim">
-                            <img src="frontend/img/service/service1-img2.png" alt="">
-                        </div>
-                        <div class="hover-area">
-                            <div class="icon">
-                                <img src="frontend/img/icons/service1-icon2.png" alt="">
-                            </div>
-                            <div class="space16"></div>
-                            <div class="heading1-w">
-                                <h4><a href="service-details.html">HR Consulting & Staffing</a></h4>
-                                <div class="space16"></div>
-                                <p>Whether you're looking for temporary staffing, direct hire placements, </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="service1-box">
-                        <div class="image overlay-anim">
-                            <img src="frontend/img/service/service1-img3.png" alt="">
-                        </div>
-                        <div class="hover-area">
-                            <div class="icon">
-                                <img src="frontend/img/icons/service1-icon3.png" alt="">
-                            </div>
-                            <div class="space16"></div>
-                            <div class="heading1-w">
-                                <h4><a href="service-details.html">Temporary Staffing Services</a></h4>
-                                <div class="space16"></div>
-                                <p>Whether you're looking for temporary staffing, direct hire placements, </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space50"></div>
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <a class="theme-btn3" href="service.html">Let’s get started <span><i
-                                    class="fa-solid fa-arrow-right"></i></span></a>
-                    </div>
-                </div>
+                <ul class="choose_us_list flex flex-col lg:gap-12 gap-8 max-lg:w-full">
+                    <li class="choose_us_item animate animate_left">
+                        <span class="icon-truck text-6xl"></span>
+                        <strong class="block mt-5 heading5">Swift Delivery</strong>
+                        <p class="mt-3 text-variant1">We ensure fast delivery to keep your operations running smoothly
+                            without delays.</p>
+                    </li>
+                    <li class="line flex-shrink-0 w-full h-px bg-outline"></li>
+                    <li class="choose_us_item animate animate_left">
+                        <span class="icon-handshake text-6xl"></span>
+                        <strong class="block mt-5 heading5">Flexible Sourcing</strong>
+                        <p class="mt-3 text-variant1">We can source items outside standard categories to provide you with
+                            exactly what you need.</p>
+                    </li>
+                    <li class="line flex-shrink-0 w-full h-px bg-outline"></li>
+                    <li class="choose_us_item animate animate_left">
+                        <span class="icon-users text-6xl"></span>
+                        <strong class="block mt-5 heading5">Customer-Centric Service</strong>
+                        <p class="mt-3 text-variant1">We focus on building long-term partnerships with attentive,
+                            customer-first service.</p>
+                    </li>
+                </ul>
 
             </div>
         </div>
-    </div>
+    </section>
 
-    <!--=====SERVICE AREA END=======-->
-
-    <!--=====OUR MISSION AREA START=======-->
-
-    <div class="mission sp">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 m-auto text-center">
-                    <div class="heading1">
-                        <span class="span">Our Mission</span>
-                        <h2>Success Our Guiding Mission</h2>
-                        <div class="space16"></div>
-                        <p> We believe that by connecting talented professionals with leading companies, we can create
-                            opportunities
-                            for growth, innovation</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="space30"></div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="mission-box">
-                        <div class="icon">
-                            <img src="frontend/img/icons/mission-icon1.png" alt="">
-                        </div>
-                        <div class="heading1">
-                            <h5><a href="#">Connecting Talent Opportunity</a></h5>
-                            <div class="space16"></div>
-                            <p>With a focus integrity, collaboration, and personalized service, we strive</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="mission-box">
-                        <div class="icon">
-                            <img src="frontend/img/icons/mission-icon2.png" alt="">
-                        </div>
-                        <div class="heading1">
-                            <h5><a href="#">Careers, Elevating Businesses</a></h5>
-                            <div class="space16"></div>
-                            <p>Our commitment excellence guides everything we do ,understanding </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="mission-box">
-                        <div class="icon">
-                            <img src="frontend/img/icons/mission-icon1.png" alt="">
-                        </div>
-                        <div class="heading1">
-                            <h5><a href="#"> Driving Success Together</a></h5>
-                            <div class="space16"></div>
-                            <p> DWe believe that connecting talented professionals leading companies</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!-- COUNTER -->
+    <section class="section counter">
+        <div class="counter_list sm:py-20 py-12 bg-dark">
+            <ul class="container flex max-xl:flex-wrap items-center justify-between gap-y-10">
+                <li class="counter_item flex flex-col items-center gap-4 max-xl:w-1/2 max-sm:w-full text-white animate"
+                    style="--i: 1">
+                    <h2 class="heading1"><span id="counter_number1" class="counter_number">50</span>+</h2>
+                    <strong class="heading6">Projects Completed</strong>
+                </li>
+                <li class="line max-xl:hidden flex-shrink-0 w-px h-32 bg-white bg-opacity-20"></li>
+                <li class="counter_item flex flex-col items-center gap-4 max-xl:w-1/2 max-sm:w-full text-white animate"
+                    style="--i: 2">
+                    <h2 class="heading1"><span id="counter_number2" class="counter_number">120</span>+</h2>
+                    <strong class="heading6">Satisfied Clients</strong>
+                </li>
+                <li class="line max-xl:hidden flex-shrink-0 w-px h-32 bg-white bg-opacity-20"></li>
+                <li class="counter_item flex flex-col items-center gap-4 max-xl:w-1/2 max-sm:w-full text-white animate"
+                    style="--i: 3">
+                    <h2 class="heading1"><span id="counter_number3" class="counter_number">15</span>+</h2>
+                    <strong class="heading6">Years of Expertise</strong>
+                </li>
+                <li class="line max-xl:hidden flex-shrink-0 w-px h-32 bg-white bg-opacity-20"></li>
+                <li class="counter_item flex flex-col items-center gap-4 max-xl:w-1/2 max-sm:w-full text-white animate"
+                    style="--i: 4">
+                    <h2 class="heading1"><span id="counter_number4" class="counter_number">100</span>+</h2>
+                    <strong class="heading6">Global Partners</strong>
+                </li>
+            </ul>
         </div>
-    </div>
-
-    <!--=====OUR MISSION AREA END=======-->
+    </section>
 
 
-    <!--=====ABOUT AREA START=======-->
+    <!-- PROCESS -->
 
-    <div class="chosse1 sp">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-2">
-                    <div class="">
-                        <div class="icon-box">
-                            <div class="icon">
-                                <img src="frontend/img/icons/choose1-icon1.png" alt="">
-                            </div>
-                            <div class="heading1">
-                                <h3>98%</h3>
-                                <div class="space10"></div>
-                                <p>Successful Client</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <div class="icon-box">
-                            <div class="icon">
-                                <img src="frontend/img/icons/choose1-icon2.png" alt="">
-                            </div>
-                            <div class="heading1">
-                                <h3>79%</h3>
-                                <div class="space10"></div>
-                                <p>Team Advisors</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <div class="icon-box icon-box2">
-                            <div class="icon">
-                                <img src="frontend/img/icons/choose1-icon3.png" alt="">
-                            </div>
-                            <div class="heading1">
-                                <h3>12+</h3>
-                                <div class="space10"></div>
-                                <p>Years Experience</p>
-                            </div>
-                        </div>
-                    </div>
-
+    <!-- TESTIMONIALS -->
+    @if(isset($testimonials) && $testimonials->count())
+        <section class="section testimonials sm:py-25 py-15 bg-surface">
+            <div class="container flex max-lg:flex-col xl:gap-20 gap-10 gap-y-8">
+                <!-- Section Header -->
+                <div class="flex-shrink-0 lg:w-[30%] sm:w-2/3 w-full">
+                    <span class="section_tag tag bg-orange animate">Testimonials</span>
+                    <h3 class="section_tit mt-4 heading3 animate">What Our Clients Are Saying?</h3>
+                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 animate">
+                        Hear from our satisfied clients who trust us for top-quality service, reliable results, and exceptional
+                        customer care on every project.
+                    </p>
                 </div>
-                <div class="col-lg-5">
-                    <div class="image overlay-anim">
-                        <img src="frontend/img/others/choose1-img.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="heading1 choose1-heading">
-                        <span class="span">Why Choose Us</span>
-                        <h2>Choose Excellence Elevate Your Hiring Experience</h2>
-                        <div class="space16"></div>
-                        <p>Our team of industry experts is dedicated to understanding your unique needs and delivering
-                            tailored
-                            solutions that propel your business forward.</p>
 
-                        <div class="space10"></div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="icon-list">
-                                    <li><span><i class="fa-solid fa-check"></i></span> Range Of Services</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="icon-list">
-                                    <li><span><i class="fa-solid fa-check"></i></span> Professional Expertise</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="icon-list">
-                                    <li><span><i class="fa-solid fa-check"></i></span> Online Recourses</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="icon-list">
-                                    <li><span><i class="fa-solid fa-check"></i></span> Client Success Stories</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="space30"></div>
-                        <div class="">
-                            <a class="theme-btn1" href="#">About US <span><i class="fa-solid fa-arrow-right"></i></span></a>
-                        </div>
+                <!-- Testimonials Carousel -->
+                <div class="testimonials_content overflow-hidden w-full xl:pl-20 lg:pl-10 lg:border-l border-outline animate animate_left"
+                    style="--i: 1">
+                    <div class="testimonials_swiper_three swiper w-full">
+                        <ul class="swiper-wrapper">
+                            @foreach($testimonials as $testimonial)
+                                <li class="testimonials_item swiper-slide">
+                                    <!-- Rating -->
+                                    <ul class="rating flex">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <li class="ph-fill ph-star text-xl {{ $i > $testimonial->rating ? 'text-variant2' : '' }}">
+                                            </li>
+                                        @endfor
+                                    </ul>
+
+                                    <!-- Testimonial Message -->
+                                    <p class="testimonials_desc mt-4 text-3xl font-bold line-clamp-4">
+                                        "{{ $testimonial->getTranslation('message', app()->getLocale()) }}"
+                                    </p>
+
+                                    <!-- Author Info -->
+                                    <div class="flex items-center gap-4 mt-8">
+                                        <div class="testimonials_img flex-shrink-0 overflow-hidden w-15 h-15 rounded-full">
+                                            @if($testimonial->image)
+                                                <img src="{{ asset('storage/' . $testimonial->image) }}" class="h-full object-cover"
+                                                    alt="{{ $testimonial->getTranslation('name', app()->getLocale()) }}">
+                                            @else
+                                                <img src="{{ asset('frontend/assets/images/team/default.png') }}"
+                                                    class="h-full object-cover" alt="Default Testimonial">
+                                            @endif
+                                        </div>
+                                        <div class="testimonials_author">
+                                            <strong
+                                                class="testimonials_name heading6">{{ $testimonial->getTranslation('name', app()->getLocale()) }}</strong>
+                                            <span class="testimonials_address block mt-1 text-variant1">
+                                                {{ $testimonial->getTranslation('designation', app()->getLocale()) }}
+                                                @if($testimonial->getTranslation('company', app()->getLocale()))
+                                                    , {{ $testimonial->getTranslation('company', app()->getLocale()) }}
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
+
+                    <!-- Swiper Pagination -->
+                    <div class="swiper-pagination relative mt-8 text-left"></div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    @endif
 
-    <!--=====ABOUT AREA END=======-->
 
-    <!--=====TESTIMONIAL AREA START=======-->
 
-    <div class="tes1 about-page-testimonial sp">
+    <!-- OUR TEAMS -->
+    <section class="section team" style="display: none;">
         <div class="container">
-            <div class="row align-items-end">
-                <div class="col-lg-6">
-                    <div class="heading1">
-                        <span class="span">Testimonial</span>
-                        <h2>Real Stories, Real Results </h2>
-                        <div class="space16"></div>
-                        <p>Discover why businesses trust us to find the right talent and candidates trust us to find the
-                            perfect
-                            fit.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="tes7-buttons">
-                        <button class="testimonial-prev-arrow1"><i class="fa-regular fa-arrow-left"></i></button>
-                        <button class="testimonial-next-arrow1"><i class="fa-regular fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="space30"></div>
-            <div class="row">
-                <div class="tes1-slider">
-                    <div class="single-slider">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <ul class="stars">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="pera">
-                                    <p>“But don't just take our word for it—hear what our satisfied clients have to say.
-                                        From Fortune 500
-                                        companies to small”</p>
+            <div class="team_inner flex flex-col items-center sm:py-25 py-15 border-t border-outline">
+                <span class="section_tag tag bg-orange animate">Our teams</span>
+                <h3 class="section_tit mt-4 heading3 animate">Meet the Our Experts</h3>
+                <p class="section_desc lg:w-1/2 lg:mt-5 mt-3 body2 text-variant1 text-center animate">Our team of skilled
+                    professionals brings years of experience, ensuring top-quality service and attention to detail in every
+                    task.</p>
+                <div class="team_swiper_three swiper w-full">
+                    <ul class="team_list swiper-wrapper w-full lg:mt-12 mt-9">
+                        <li class="swiper-slide group">
+                            <div class="team_item animate" style="--i: 1">
+                                <div class="team_img overflow-hidden relative aspect-[3/4]">
+                                    <img src="frontend/assets/images/team/team1.jpg"
+                                        class="h-full object-cover duration-400 group-hover:scale-110" alt="John Michaels">
+                                    <ul
+                                        class="team_socials flex flex-col gap-2 absolute top-3 right-3 translate-x-25 duration-400 group-hover:translate-x-0 max-lg:translate-x-0">
+                                        <li class="translate-x-20 duration-400 delay-0 group-hover:translate-x-0">
+                                            <a href="https://www.facebook.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-facebook-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-100 group-hover:translate-x-0">
+                                            <a href="https://www.x.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-x-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-200 group-hover:translate-x-0">
+                                            <a href="https://www.linkedin.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-linkedin-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-300 group-hover:translate-x-0">
+                                            <a href="https://www.instagram.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-instagram-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="bottom-heading">
-                                    <h4><a href="#">Amir Jamil</a></h4>
-                                    <p>Vp,Daily Naws</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="tes1-image">
-                                    <img src="frontend/img/testimonial/tes1-img1.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="single-slider">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <ul class="stars">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="pera">
-                                    <p>“Our dedication to excellence, and commitment to building long-lasting partnerships
-                                        have”</p>
-                                </div>
-                                <div class="bottom-heading">
-                                    <h4><a href="#">Usman Khan</a></h4>
-                                    <p>Co Funder</p>
+                                <div class="team_info mt-5">
+                                    <strong
+                                        class="team_name line-clamp-2 heading5 duration-300 group-hover:text-orange">John
+                                        Michaels</strong>
+                                    <span class="team_position mt-2 text-variant1 line-clamp-2">Senior Project
+                                        Manager</span>
                                 </div>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="tes1-image">
-                                    <img src="frontend/img/testimonial/tes1-img2.png" alt="">
+                        </li>
+                        <li class="swiper-slide group">
+                            <div class="team_item animate" style="--i: 2">
+                                <div class="team_img overflow-hidden relative aspect-[3/4]">
+                                    <img src="frontend/assets/images/team/team2.jpg"
+                                        class="h-full object-cover duration-400 group-hover:scale-110" alt="Sarah Thompson">
+                                    <ul
+                                        class="team_socials flex flex-col gap-2 absolute top-3 right-3 translate-x-25 duration-400 group-hover:translate-x-0 max-lg:translate-x-0">
+                                        <li class="translate-x-20 duration-400 delay-0 group-hover:translate-x-0">
+                                            <a href="https://www.facebook.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-facebook-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-100 group-hover:translate-x-0">
+                                            <a href="https://www.x.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-x-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-200 group-hover:translate-x-0">
+                                            <a href="https://www.linkedin.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-linkedin-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-300 group-hover:translate-x-0">
+                                            <a href="https://www.instagram.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-instagram-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="team_info mt-5">
+                                    <strong
+                                        class="team_name line-clamp-2 heading5 duration-300 group-hover:text-orange">Sarah
+                                        Thompson</strong>
+                                    <span class="team_position mt-2 text-variant1 line-clamp-2">Lead HVAC Technician</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <div class="single-slider">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <ul class="stars">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="pera">
-                                    <p>“But don't just take our word for it—hear what our satisfied clients have to say.
-                                        From Fortune 500
-                                        companies to small”</p>
+                        </li>
+                        <li class="swiper-slide group">
+                            <div class="team_item animate" style="--i: 3">
+                                <div class="team_img overflow-hidden relative aspect-[3/4]">
+                                    <img src="frontend/assets/images/team/team3.jpg"
+                                        class="h-full object-cover duration-400 group-hover:scale-110" alt="Emily Carter">
+                                    <ul
+                                        class="team_socials flex flex-col gap-2 absolute top-3 right-3 translate-x-25 duration-400 group-hover:translate-x-0 max-lg:translate-x-0">
+                                        <li class="translate-x-20 duration-400 delay-0 group-hover:translate-x-0">
+                                            <a href="https://www.facebook.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-facebook-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-100 group-hover:translate-x-0">
+                                            <a href="https://www.x.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-x-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-200 group-hover:translate-x-0">
+                                            <a href="https://www.linkedin.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-linkedin-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-300 group-hover:translate-x-0">
+                                            <a href="https://www.instagram.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-instagram-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="bottom-heading">
-                                    <h4><a href="#">Amir Jamil</a></h4>
-                                    <p>Vp,Daily Naws</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="tes1-image">
-                                    <img src="frontend/img/testimonial/tes1-img1.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="single-slider">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <ul class="stars">
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                    <li><i class="fa-solid fa-star"></i></li>
-                                </ul>
-                                <div class="pera">
-                                    <p>“Our dedication to excellence, and commitment to building long-lasting partnerships
-                                        have”</p>
-                                </div>
-                                <div class="bottom-heading">
-                                    <h4><a href="#">Usman Khan</a></h4>
-                                    <p>Co Funder</p>
+                                <div class="team_info mt-5">
+                                    <strong
+                                        class="team_name line-clamp-2 heading5 duration-300 group-hover:text-orange">Emily
+                                        Carter</strong>
+                                    <span class="team_position mt-2 text-variant1 line-clamp-2">Customer Support
+                                        Manager</span>
                                 </div>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="tes1-image">
-                                    <img src="frontend/img/testimonial/tes1-img2.png" alt="">
+                        </li>
+                        <li class="swiper-slide group">
+                            <div class="team_item animate" style="--i: 4">
+                                <div class="team_img overflow-hidden relative aspect-[3/4]">
+                                    <img src="frontend/assets/images/team/team4.jpg"
+                                        class="h-full object-cover duration-400 group-hover:scale-110" alt="Mark Robinson">
+                                    <ul
+                                        class="team_socials flex flex-col gap-2 absolute top-3 right-3 translate-x-25 duration-400 group-hover:translate-x-0 max-lg:translate-x-0">
+                                        <li class="translate-x-20 duration-400 delay-0 group-hover:translate-x-0">
+                                            <a href="https://www.facebook.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-facebook-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-100 group-hover:translate-x-0">
+                                            <a href="https://www.x.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-x-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-200 group-hover:translate-x-0">
+                                            <a href="https://www.linkedin.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-linkedin-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                        <li class="translate-x-20 duration-400 delay-300 group-hover:translate-x-0">
+                                            <a href="https://www.instagram.com/"
+                                                class="inline-flex items-center justify-center w-11 h-11 bg-white duration-400 hover:bg-orange hover:text-white"
+                                                target="_blank">
+                                                <span class="ph ph-instagram-logo text-2xl"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="team_info mt-5">
+                                    <strong
+                                        class="team_name line-clamp-2 heading5 duration-300 group-hover:text-orange">Mark
+                                        Robinson</strong>
+                                    <span class="team_position mt-2 text-variant1 line-clamp-2">Plumbing Services
+                                        Specialist</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!--=====TESTIMONIAL AREA END=======-->
-
-    <!--=====TEAM AREA START=======-->
-
-    <div class="team1 about-page-team sp">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 m-auto text-center">
-                    <div class="heading1">
-                        <span class="span">Our Team</span>
-                        <h2>Get to Know Our Professionals</h2>
-                        <div class="space16"></div>
-                        <p>We take pride in fostering a collaborative environment where innovation <br> thrives and clients
-                            receive
-                            personalized attention at every step </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="space30"></div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="team1-box overlay-anim">
-                        <div class="image">
-                            <img src="frontend/img/team/team1-img1.png" alt="">
-                        </div>
-                        <div class="heading-area">
-                            <div class="heading1">
-                                <h4><a href="mailto:ammarahmed.khan@1globalsolutions.com">Ammar Ahmed Khan</a></h4>
-                                <p>CEO</p>
-                            </div>
-
-                            <div class="icons">
-                                <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="team1-box overlay-anim">
-                        <div class="image">
-                            <img src="frontend/img/team/team1-img2.png" alt="">
-                        </div>
-                        <div class="heading-area">
-                            <div class="heading1">
-                                <h4><a href="mailto:mubeen.mohammed@1globalsolutions.com">Mubeen Mohammed</a></h4>
-                                <p>Director</p>
-                            </div>
-
-                            <div class="icons">
-                                <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--=====TEAM AREA END=======-->
-
-
-    <!--===== CTA AREA START =======-->
-
-    @include('partials.cta')
-
-    <!--===== CTA AREA START =======-->
+    </section>
 @endsection

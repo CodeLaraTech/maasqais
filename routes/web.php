@@ -15,7 +15,10 @@ use Nwidart\Modules\Facades\Module;
 Route::get('/job/{slug}', [JobController::class, 'showBySlug'])->name('job.detail');
 
 // Contact form
-Route::post('/contact-us', [ContactController::class, 'sendContact'])->name('contact.send');
+
+
+Route::post('/contact-send', [EmailController::class, 'sendContactForm'])->name('contact.send');
+
 
 // CV upload
 Route::post('/upload-cv', [EmailController::class, 'uploadCv'])->name('upload.cv');

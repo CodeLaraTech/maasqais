@@ -4,203 +4,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $page->title ?? 'Page' }} | {{ $web_settings['site_name'] ?? 'Global Solutions - Staffing Agency' }}
+    <title>{{ $page->title ?? 'Page' }} | {{ $web_settings['site_name'] ?? 'Maasqais' }}
     </title>
 
 
     @yield('meta')
 
-    <!--=====FAB ICON=======-->
-    <link rel="shortcut icon" href="{{ $web_settings['favicon_url'] ?? url('frontend/img/logo/titel2.png') }}"
-        type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('frontend/assets/images/logo_red.png') }}">
+    <link rel="stylesheet" href="{{ url('frontend/assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ url('frontend/assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url('frontend/assets/css/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ url('frontend/dist/output-tailwind.css') }}">
+    <link rel="stylesheet" href="{{ url('frontend/dist/output-scss.css') }}">
 
-    <!--=====CSS=======-->
-    <link rel="stylesheet" href="{{ url('frontend/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/slick-slider.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/aos.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/mobile-menu.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/css/main.css') }}">
 
-    <!--=====JQUERY=======-->
-    <script src="{{ url('frontend/js/jquery-3-6-0.min.js') }}"></script>
-    <style>
-        .common-hero>div>div>div>div>h1,
-        .common-hero>div>div>div>div>div>a,
-        .common-hero>div>div>div>div>div>span,
-        .common-hero>div>div>div>div>div>p {
-            color: white !important;
-        }
-    </style>
 </head>
 
 <body class="body">
 
-    <!-- Preloader Start -->
-    <div class="preloader">
-        <div class="loading-container">
-            <div class="loading loading"></div>
-            <div id="loading-icon">
-                <img src="{{ $web_settings['favicon_url'] ?? url('frontend/img/logo/titel2.png') }}" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- Preloader End -->
 
-    <!--=====progress END=======-->
-    <div class="paginacontainer">
-        <div class="progress-wrap">
-            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-            </svg>
-        </div>
-    </div>
-    <!--=====progress END=======-->
+    <header id="header" class="header relative z-[2]">
+        <!-- Top Nav -->
+        <div class="top_nav flex items-center justify-between h-11 lg:px-10 px-4 bg-dark text-white">
+            <ul class="top_nav_info flex items-center gap-6">
+                <!-- Address -->
+                @if(!empty($web_settings['address']))
+                    <li
+                        class="info_item inline-flex items-center gap-2 pr-6 border-r border-white border-opacity-10 max-md:hidden">
+                        <span class="ph ph-map-pin"></span>
+                        <span class="caption1">{{ $web_settings['address'] }}</span>
+                    </li>
+                @endif
 
-    <header>
-        <div class="header-area header-area2 header-area-all d-none d-lg-block" id="header">
-            <div class="container">
-                <div class="row header-bg">
-                    <div class="col-12">
-                        <div class="header-elements">
-                            <div class="site-logo">
-                                <a href="{{ url('/') }}">
-                                    <img src="{{ $web_settings['header_logo_url'] ?? url('frontend/img/logo/header-logo5.png') }}"
-                                        alt="{{ $web_settings['web_title'] ?? 'One Global Solutions' }}">
-                                </a>
-                            </div>
+                <!-- Working Hours -->
+                @if(!empty($web_settings['working_hours']))
+                    <li
+                        class="info_item inline-flex items-center gap-2 pr-6 border-r border-white border-opacity-10 max-[500px]:hidden">
+                        <span class="ph ph-alarm"></span>
+                        <span class="caption1">{{ $web_settings['working_hours'] }}</span>
+                    </li>
+                @endif
 
-                            <div class="main-menu-ex main-menu-ex1">
-                                <ul>
-                                    @if (@$primary_menu)
-                                        @foreach ($primary_menu->items as $item)
-                                            @include('partials.menu-item', ['item' => $item])
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="header2-buttons d-flex align-items-center gap-2">
-                                <!-- Contact Us Button -->
-                                <div class="button">
-                                    <a class="theme-btn1" href="{{ url('/contact-us') }}">Contact Us</a>
-                                </div>
-
-                                <!-- Login / Sign Up Dropdown Button -->
-                                <div class="dropdown">
-                                    <a class="btn btn-sm theme-btn1 dropdown-toggle" data-bs-toggle="dropdown" href="#">
-                                        Login / Sign Up <i class="fas fa-caret-down ms-1"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ url('/login') }}">Login</a></li>
-                                        <li><a class="dropdown-item" href="{{ url('/register') }}">Sign Up</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
+                <!-- Language Selector -->
+                <li>
+                    <div class="form_select">
+                        <select class="pr-9 caption1 uppercase" name="selectLanguage" id="selectLanguage">
+                            <option class="text-black" value="en">en</option>
+                            <option class="text-black" value="fr">fr</option>
+                            <option class="text-black" value="de">de</option>
+                        </select>
+                        <span class="ph ph-caret-down arrow_down text-xs text-white"></span>
                     </div>
-                </div>
-            </div>
+                </li>
+
+            </ul>
+
+            <!-- Social Links -->
+            <ul class="top_nav_social flex items-center">
+                <li class="social_item">
+                    <a href="{{ $web_settings['social_facebook'] ?? '#' }}"
+                        class="social_link flex items-center justify-center w-9 h-9" target="_blank">
+                        <span class="ph ph-facebook-logo text-xl"></span>
+                        <span class="blind">link facebook</span>
+                    </a>
+                </li>
+                <li class="social_item">
+                    <a href="{{ $web_settings['social_twitter'] ?? '#' }}"
+                        class="social_link flex items-center justify-center w-9 h-9" target="_blank">
+                        <span class="ph ph-x-logo text-xl"></span>
+                        <span class="blind">link x</span>
+                    </a>
+                </li>
+                <li class="social_item">
+                    <a href="{{ $web_settings['social_instagram'] ?? '#' }}"
+                        class="social_link flex items-center justify-center w-9 h-9" target="_blank">
+                        <span class="ph ph-instagram-logo text-xl"></span>
+                        <span class="blind">link instagram</span>
+                    </a>
+                </li>
+                <li class="social_item">
+                    <a href="{{ $web_settings['social_skype'] ?? '#' }}"
+                        class="social_link flex items-center justify-center w-9 h-9" target="_blank">
+                        <span class="ph ph-skype-logo text-xl"></span>
+                        <span class="blind">link skype</span>
+                    </a>
+                </li>
+                <li class="social_item">
+                    <a href="{{ $web_settings['social_telegram'] ?? '#' }}"
+                        class="social_link flex items-center justify-center w-9 h-9" target="_blank">
+                        <span class="ph ph-telegram-logo text-xl"></span>
+                        <span class="blind">link telegram</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Header Main -->
+        <div
+            class="header_main flex items-center justify-between absolute top-11 left-0 w-full sm:h-25 h-20 lg:px-10 px-4 bg-[#000] bg-opacity-[12%] backdrop-blur">
+
+            <!-- Logo -->
+            <h1>
+                <a href="{{ url('/') }}" class="logo flex items-center gap-3">
+                    <img src="{{ asset($web_settings['logo'] ?? 'frontend/assets/images/logo_red.png') }}"
+                        class="flex-shrink-0 w-20" alt="logo">
+                    
+                </a>
+            </h1>
+
+            <!-- Menu -->
+            <ul class="menu style-red flex items-center gap-10 h-full max-lg:hidden">
+                @if (@$primary_menu)
+                    @foreach ($primary_menu->items as $item)
+                        @include('partials.menu-item', ['item' => $item])
+                    @endforeach
+                @endif
+
+            </ul>
+
+
+            <!-- Header Info -->
+            <ul class="header_info flex items-center gap-10">
+                <li>
+                    <ul class="menu_icons">
+                        <!-- Search -->
+                        <li class="menu_icons_item inline-block align-middle max-lg:hidden">
+                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_search">
+                                <span class="ph ph-magnifying-glass text-2xl text-white"></span>
+                                <span class="blind">button search</span>
+                            </button>
+                        </li>
+
+                        <!-- Wishlist -->
+                        <li class="menu_icons_item inline-block align-middle relative ml-5">
+                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_wishlist">
+                                <span class="ph ph-heart text-2xl text-white"></span>
+                                <span class="blind">button wishlist</span>
+                            </button>
+                            <span
+                                class="wishlist_quantity flex items-center justify-center absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white text-[10px] pointer-events-none">
+                                {{ $wishlist_count ?? 0 }}
+                            </span>
+                        </li>
+
+                        <!-- Cart -->
+                        <li class="menu_icons_item inline-block align-middle relative ml-5">
+                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_cart">
+                                <span class="ph ph-shopping-bag-open text-2xl text-white"></span>
+                                <span class="blind">button cart</span>
+                            </button>
+                            <span
+                                class="cart_quantity flex items-center justify-center absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white text-[10px] pointer-events-none">
+                                {{ $cart_count ?? 0 }}
+                            </span>
+                        </li>
+
+                        <!-- Mobile Menu -->
+                        <li class="menu_icons_item inline-block align-middle ml-5 lg:hidden">
+                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_menu_mobile">
+                                <span class="ph ph-list text-2xl text-white"></span>
+                                <span class="blind">button menu mobile</span>
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Request Estimate -->
+                <li class="max-xl:hidden">
+                    <a href="#" class="btn bg-red">Request an estimate</a>
+                </li>
+
+                <!-- Phone -->
+                @if(!empty($web_settings['phone']))
+                    <li class="max-[1600px]:hidden">
+                        <a href="tel:{{ $web_settings['phone'] }}" class="flex items-center gap-3 group">
+                            <span
+                                class="flex items-center justify-center sm:w-14 w-12 sm:h-14 h-12 bg-white text-red duration-400 group-hover:bg-red group-hover:text-white">
+                                <span class="ph ph-phone-call sm:text-3xl text-2xl"></span>
+                            </span>
+                            <div class="max-lg:hidden">
+                                <span class="text-white">Call Us Now:</span>
+                                <strong class="heading6 block mt-0.5 text-white">{{ $web_settings['phone'] }}</strong>
+                            </div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </header>
     <!--=====HEADER END=======-->
 
-    <!--=====Mobile header start=======-->
-    <div class="mobile-header mobile-header-main d-block d-lg-none">
-        <div class="container-fluid">
-            <div class="col-12">
-                <div class="mobile-header-elements">
-                    <div class="mobile-logo">
-                        <a href="{{ url('/') }}"><img
-                                src="{{ $web_settings['header_logo_url'] ?? url('frontend/img/logo/header-logo5.png') }}"
-                                alt=""></a>
-                    </div>
-                    <div class="mobile-nav-icon">
-                        <i class="fa-duotone fa-bars-staggered"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="mobile-sidebar d-block d-lg-none">
-        <div class="logo-m">
-            <a href="{{ url('/') }}"><img src="{{ url('frontend/img/logo/header-logo5.png') }}" alt=""></a>
-        </div>
-        <div class="menu-close">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-        <div class="mobile-nav">
-            <ul>
-                @if (@$primary_menu)
-                    @foreach ($primary_menu->items as $item)
-                        <li><a href="{{ url($item->url) }}">{{ $item->title }}</a></li>
-                    @endforeach
-                @endif
-            </ul>
-
-            <div class="mobile-button">
-                <a class="theme-btn10" href="#">Learn More <span><i class="fa-solid fa-arrow-right"></i></span></a>
-            </div>
-
-            <div class="single-footer-items">
-                <h3>Contact Us</h3>
-                <div class="contact-box">
-                    <div class="icon">
-                        <img src="{{ url('frontend/img/icons/footer-icon1.png') }}" alt="">
-                    </div>
-                    <div class="pera">
-                        <a
-                            href="tel:{{ $web_settings['phone'] ?? '+1 (555) 123-4567' }}">{{ $web_settings['phone'] ?? '+1 (555) 123-4567' }}</a>
-                    </div>
-                </div>
-                <div class="contact-box">
-                    <div class="icon">
-                        <img src="{{ url('frontend/img/icons/footer-icon2.png') }}" alt="">
-                    </div>
-                    <div class="pera">
-                        <a href="mailto:{{ $web_settings['email'] ?? 'contact@globaloverseas.com' }}">{{
-                            $web_settings['email'] ?? 'contact@globaloverseas.com' }}</a>
-                    </div>
-                </div>
-                <div class="contact-box">
-                    <div class="icon">
-                        <img src="{{ url('frontend/img/icons/footer-icon3.png') }}" alt="">
-                    </div>
-                    <div class="pera">
-                        <a href="#">{{ $web_settings['address'] ?? '123 Business Plaza<br>New York, NY 10001' }}</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-infos">
-                <h3>Our Location</h3>
-                <ul class="social-icon">
-                    <li><a href="{{ $web_settings['social_linkedin'] ?? '#' }}"><i
-                                class="fa-brands fa-linkedin-in"></i></a>
-                    </li>
-<<<<<<< Updated upstream
-                    <li><a href="{{ $web_settings['social_twitter'] ?? '#' }}"><i class="fa-brands fa-x-twitter"></i></a></li>
-
-                    <li><a href="{{ $web_settings['social_instagram'] ?? '#' }}"><i class="fa-brands fa-instagram"></i></a>
-=======
-                    <li><a href="{{ $web_settings['social_twitter'] ?? '#' }}"><i
-                                class="fa-brands fa-x-twitter"></i></a></li>
-
-                    <li><a href="{{ $web_settings['social_instagram'] ?? '#' }}"><i
-                                class="fa-brands fa-instagram"></i></a>
->>>>>>> Stashed changes
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <!--=====Mobile header end=======-->
 
     <main class="main-wrapper" id="page-content">
@@ -208,198 +203,450 @@
     </main>
 
     @unless (isset($no_footer))
-        <footer>
-            <div class="footer10 _relative">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-footer-items footer-logo-area">
-                                <div class="footer-logo">
-                                    <a href="{{ url('/') }}"><img
-                                            src="{{ $web_settings['footer_logo_url'] ?? url('frontend/img/logo/footer-logo1.png') }}"
-                                            alt=""></a>
-                                </div>
-                                <div class="space20"></div>
-                                <div class="heading1-w">
-                                    <p>{{ $web_settings['footer_about'] ?? 'At 1 Global Solutions is a premier staffing agency dedicated to connecting exceptional talent with leading organizations worldwide across healthcare, technology, and engineering sectors.' }}
-                                    </p>
-                                </div>
-                                <ul class="social-icon">
-                                    <li><a href="{{ $web_settings['social_linkedin'] ?? '#' }}"><i
-                                                class="fa-brands fa-linkedin-in"></i></a></li>
-                                    <li><a href="{{ $web_settings['social_twitter'] ?? '#' }}"><i
-                                                class="fa-brands fa-x-twitter"></i></a></li>
-                                    <li><a href="{{ $web_settings['social_youtube'] ?? '#' }}"><i
-                                                class="fa-brands fa-youtube"></i></a></li>
-                                    <li><a href="{{ $web_settings['social_instagram'] ?? '#' }}"><i
-                                                class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
+        <footer class="footer sm:pt-20 pt-12 bg-dark text-white">
+            <div class="container flex flex-wrap justify-between gap-10">
+
+                {{-- Left Info Section --}}
+                <div class="footer_info md:w-1/4 w-full">
+                    <h1>
+                        <a href="{{ url('/') }}" class="footer_logo flex items-center gap-3">
+                            <img src="{{ url('frontend/assets/images/logo_red.png') }}"
+                                class="flex-shrink-0 w-20" alt="logo">
+                            
+                        </a>
+                    </h1>
+
+                    <div class="footer_map mt-7">
+                        <div class="flex items-center gap-2 pb-2">
+                            <span class="ph ph-map-pin text-2xl"></span>
+                            <span>{!! $web_settings['address'] ?? 'Jeddah, Saudi Arabia' !!}</span>
                         </div>
+                        <a href="{{ $web_settings['map_link'] ?? '#' }}"
+                            class="text-sm font-bold underline duration-300 hover:text-red" target="_blank">Google map</a>
+                    </div>
 
-                        <div class="col-lg col-md-6 col-12">
-                            <div class="single-footer-items">
-                                <h3>Our Services</h3>
-                                <ul class="menu-list">
-                                    @if ($footer_menu_1)
-                                        @foreach ($footer_menu_1->items as $item)
-                                            <li><a href="{{ url($item->url) }}">{{ $item->title }}</a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="footer_mail flex flex-wrap items-center gap-2 mt-4">
+                        <span class="ph ph-envelope text-2xl"></span>
+                        <span>{{ $web_settings['email'] ?? 'info@maasqais.com' }}</span>
+                    </div>
 
-                        <div class="col-lg col-md-6 col-12">
-                            <div class="single-footer-items pl-5">
-                                <h3>Quick Links</h3>
-                                <ul class="menu-list">
-                                    @if ($footer_menu_2)
-                                        @foreach ($footer_menu_2->items as $item)
-                                            <li><a href="{{ url($item->url) }}">{{ $item->title }}</a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="footer_time mt-4">
+                        <span class="block pb-1 text-variant2">Opening Times:</span>
+                        <span>{{ $web_settings['opening_times_week'] ?? 'Mon - Fri: 9am - 5pm' }}</span>
+                        <span>{{ $web_settings['opening_times_weekend'] ?? 'Weekend: 10am - 4pm' }}</span>
+                    </div>
 
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="single-footer-items">
-                                <h3>Global Headquarters</h3>
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <img src="{{ url('frontend/img/icons/footer6-icon1.svg') }}" alt="">
-                                    </div>
-                                    <div class="pera">
-                                        <a
-                                            href="tel:{{ $web_settings['phone'] ?? '+1 (555) 123-4567' }}">{{ $web_settings['phone'] ?? '+1 (555) 123-4567' }}</a>
-                                    </div>
-                                </div>
+                    {{-- Social Links --}}
+                    <ul class="footer_social flex flex-wrap items-center gap-3 mt-7">
+                        @if(!empty($web_settings['social_messenger']))
+                            <li class="social_item">
+                                <a href="{{ $web_settings['social_messenger'] }}"
+                                    class="social_link flex items-center justify-center w-10 h-10 border border-white border-opacity-10 rounded-full text-white duration-400 hover:bg-white hover:text-red"
+                                    target="_blank">
+                                    <span class="ph ph-messenger-logo text-xl"></span>
+                                    <span class="blind">link messenger</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(!empty($web_settings['social_twitter']))
+                            <li class="social_item">
+                                <a href="{{ $web_settings['social_twitter'] }}"
+                                    class="social_link flex items-center justify-center w-10 h-10 border border-white border-opacity-10 rounded-full text-white duration-400 hover:bg-white hover:text-red"
+                                    target="_blank">
+                                    <span class="ph ph-x-logo text-xl"></span>
+                                    <span class="blind">link x</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(!empty($web_settings['social_instagram']))
+                            <li class="social_item">
+                                <a href="{{ $web_settings['social_instagram'] }}"
+                                    class="social_link flex items-center justify-center w-10 h-10 border border-white border-opacity-10 rounded-full text-white duration-400 hover:bg-white hover:text-red"
+                                    target="_blank">
+                                    <span class="ph ph-instagram-logo text-xl"></span>
+                                    <span class="blind">link instagram</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(!empty($web_settings['social_skype']))
+                            <li class="social_item">
+                                <a href="{{ $web_settings['social_skype'] }}"
+                                    class="social_link flex items-center justify-center w-10 h-10 border border-white border-opacity-10 rounded-full text-white duration-400 hover:bg-white hover:text-red"
+                                    target="_blank">
+                                    <span class="ph ph-skype-logo text-xl"></span>
+                                    <span class="blind">link skype</span>
+                                </a>
+                            </li>
+                        @endif
+                        @if(!empty($web_settings['social_telegram']))
+                            <li class="social_item">
+                                <a href="{{ $web_settings['social_telegram'] }}"
+                                    class="social_link flex items-center justify-center w-10 h-10 border border-white border-opacity-10 rounded-full text-white duration-400 hover:bg-white hover:text-red"
+                                    target="_blank">
+                                    <span class="ph ph-telegram-logo text-xl"></span>
+                                    <span class="blind">link telegram</span>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
 
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <img src="{{ url('frontend/img/icons/footer6-icon2.svg') }}" alt="">
-                                    </div>
-                                    <div class="pera">
-                                        <a
-                                            href="#">{!! $web_settings['address'] ?? '135 Old Foxon Rd, 2, East Haven, <br> CT, 06513, United States.' !!}</a>
-                                    </div>
-                                </div>
+                {{-- Right Content Section --}}
+                <div class="footer_content md:w-2/3 w-full">
 
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <img src="{{ url('frontend/img/icons/footer6-icon3.svg') }}" alt="">
-                                    </div>
-                                    <div class="pera">
-                                        <a
-                                            href="mailto:{{ $web_settings['email'] ?? 'info@globaloverseas.com' }}">{{ $web_settings['email'] ?? 'info@1globaloverseas.com' }}</a>
-                                    </div>
-                                </div>
-
-                                <div class="contact-box">
-                                    <div class="icon">
-                                        <img src="{{ url('frontend/img/icons/footer6-icon4.svg') }}" alt="">
-                                    </div>
-                                    <div class="pera">
-                                        <a href="#">{{ $web_settings['website'] ?? 'www.1globalsolutions.com' }}</a>
-                                    </div>
-                                </div>
-                            </div>
+                    {{-- Newsletter --}}
+                    <div
+                        class="footer_newsletter flex max-lg:flex-col gap-15 gap-y-6 pb-10 border-b border-white border-opacity-10">
+                        <h4 class="heading4">Subscribe <br class="max-lg:hidden">Newsletter</h4>
+                        <div class="w-full">
+                            <form class='flex w-full' method="POST" action="#">
+                                @csrf
+                                <input type="email" name="email" placeholder='Enter your e-mail'
+                                    class='caption1 w-full h-14 px-6 border border-white border-opacity-10 duration-300 focus:border-white'
+                                    required />
+                                <button type="submit"
+                                    class='btn flex-shrink-0 h-fit bg-red hover:bg-white'>Subscribe</button>
+                            </form>
+                            <p class="mt-4 text-variant2">Sign up to get the latest news and events—we promise no spam.</p>
                         </div>
                     </div>
 
-                    <div class="space70"></div>
+                    {{-- Footer Navigation --}}
+                    <div class="footer_nav flex max-xl:flex-wrap justify-between gap-10 gap-y-6 mt-10">
+
+                        {{-- About Menu --}}
+                        <div class="footer_nav_area max-sm:w-full">
+                            <strong class="footer_nav_heading txt-label max-sm:hidden">About</strong>
+                            <ul class="footer_nav_list flex flex-col gap-2 mt-3">
+                                @if ($footer_menu_1)
+                                    @foreach ($footer_menu_1->items as $item)
+                                        <li>
+                                            <a href="{{ url($item->url) }}"
+                                                class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                                {{ $item->title }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+
+                        {{-- Categories Menu (dynamic optional) --}}
+                        <div class="footer_nav_area max-sm:w-full">
+                            <strong class="footer_nav_heading txt-label max-sm:hidden">Categories</strong>
+                            <ul class="footer_nav_list flex flex-col gap-2 mt-3">
+                                @if ($footer_menu_2)
+                                    @foreach ($footer_menu_2->items as $item)
+                                        <li>
+                                            <a href="{{ url($item->url) }}"
+                                                class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                                {{ $item->title }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+
+                        {{-- Extra Static Quick Links --}}
+                        <div class="footer_nav_area max-sm:w-full">
+                            <strong class="footer_nav_heading txt-label max-sm:hidden">Quick Links</strong>
+                            <ul class="footer_nav_list flex flex-col gap-2 mt-3">
+                                <li><a href="{{ url('/services') }}"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Our
+                                        Services</a></li>
+                                <li><a href="{{ url('/pricing') }}"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Pricing
+                                        Plans</a></li>
+                                <li><a href="{{ url('/shop') }}"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Shop</a>
+                                </li>
+                                <li><a href="{{ url('/contact') }}"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {{-- Contact Call To Action --}}
+                        <div class="footer_nav_area max-md:w-full">
+                            <strong class="footer_nav_heading txt-label">Get a Free Estimate Today!</strong>
+                            <p class="footer_nav_desc mt-3 text-variant2">Call us for a cost estimate over the phone</p>
+                            <h5 class="footer_nav_contact heading5 mt-4">{{ $web_settings['phone'] ?? '1-555-678-8888' }}
+                            </h5>
+                            <a href="{{ url('/book-appointment') }}" class="btn mt-4 bg-red hover:bg-white">Request an
+                                estimate</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="copyright-area _relative">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-md-12">
-                                <div class="coppyright">
-                                    <p>© Copyright {{ date('Y') }} -
-                                        {{ $web_settings['site_name'] ?? 'One Global Solutions' }}. All Rights Reserved
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                {{-- Bottom Bar --}}
+                <div
+                    class="footer_bottom flex items-center justify-between max-sm:flex-col gap-2 w-full mt-5 py-4 border-t border-white border-opacity-10">
+                    <p class="copyright text-variant2 text-center">
+                        Copyright © {{ date('Y') }} {{ $web_settings['site_name'] ?? 'One Global Solutions' }}.
+                        All rights reserved
+                    </p>
+                    <div class="footer_bottom_link flex items-center gap-2.5">
+                        <a class="text-variant2 hover:underline hover:text-white" href="{{ url('/terms') }}">Terms Of
+                            Services</a>
+                        <span class="text-white opacity-10">|</span>
+                        <a class="text-variant2 hover:underline hover:text-white"
+                            href="{{ url('/privacy-policy') }}">Privacy Policy</a>
                     </div>
                 </div>
             </div>
         </footer>
     @endunless
+
     <!--===== FOOTER AREA END =======-->
+    <!-- Scroll to top -->
+    <a class="scroll_to_top_btn bg-red" href="#header"><span class="ph-bold ph-caret-up"></span></a>
 
-    <!-- Popup Contact Form -->
-    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <!-- Menu mobile -->
+        <div id="popup_menu_mobile"
+            class="popup_item popup_menu_mobile absolute top-0 left-0 w-full h-full bg-white -translate-x-full duration-500">
+            <div class="menu menu_mobile_inner style-red p-6 overflow-x-hidden max-h-full">
+
+                <!-- Logo + Close -->
+                <div class="heading flex justify-between">
+                    <a href="{{ url('/') }}" class="logo flex items-center gap-3">
+                        <img src="{{ asset($web_settings['logo'] ?? 'frontend/assets/images/logo_red.png') }}"
+                            class="flex-shrink-0 w-12" alt="{{ $web_settings['site_name'] ?? 'Logo' }}">
+                        
+                    </a>
+                    <button
+                        class="btn_close_popup js_btn_close_popup flex items-center justify-center w-7 h-7 rounded-full bg-black text-white">
+                        <span class="ph ph-x text-lg"></span>
+                        <span class="blind">button close popup</span>
+                    </button>
                 </div>
-                @if (session('message'))
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: "{{ session('message') }}",
-                                timer: 3000,
-                                showConfirmButton: false
-                            });
-                        });
-                    </script>
-                @endif
 
-                <div class="modal-body">
-                    <div class="modal-box">
-                        <form method="POST" action="{{ route('contact.send') }}">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input name="name" type="text" placeholder="Your Name *" required>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input name="email" type="email" placeholder="Your Email *" required>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input name="phone" type="text" placeholder="Your Phone">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input name="subject" type="text" placeholder="Subject *" required>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *"
-                                        required></textarea>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <button type="submit" class="modal-button">Send Message</button>
+                <!-- Search -->
+                <form class="form_search overflow-hidden relative w-full h-13 mt-8" action="{{ url('search') }}"
+                    method="GET">
+                    <input class="form_input py-3 pl-4 pr-16 w-full h-full border border-transparent bg-surface"
+                        type="text" name="q" placeholder="Search..." required />
+                    <button type="submit"
+                        class="flex items-center justify-end absolute top-0 right-4 w-8 h-full aspect-square">
+                        <span class="ph ph-magnifying-glass text-2xl"></span>
+                    </button>
+                </form>
+
+                <!-- Dynamic Menu -->
+                <ul class="menu_mobile_nav flex flex-col gap-3 mt-6">
+                    @if (!empty($primary_menu))
+                        @foreach ($primary_menu->items as $item)
+                            @php
+                                $itemUrl = trim($item->url, '/');
+                                $isActive = request()->is($itemUrl) || request()->is($itemUrl . '/*') || ($item->url == '/' && request()->path() == '/');
+                            @endphp
+
+                            <li>
+                                <a href="{{ $item->children->count() ? '#!' : url($item->url) }}"
+                                    class="menu_link {{ $item->children->count() ? 'btn_toggle' : '' }} flex items-center justify-between w-full py-3 border-b border-outline {{ $isActive ? 'active' : '' }}">
+                                    <strong class="heading6">{{ $item->title }}</strong>
+                                    @if ($item->children->count())
+                                        <span class="ph ph-caret-down text-xl"></span>
+                                    @endif
+                                </a>
+
+                                @if ($item->children->count())
+                                    <ul class="menu_sub_nav px-4 pt-2">
+                                        @foreach ($item->children as $child)
+                                            @php
+                                                $childUrl = trim($child->url, '/');
+                                                $childActive = request()->is($childUrl) || request()->is($childUrl . '/*');
+                                            @endphp
+                                            <li>
+                                                <a href="{{ url($child->url) }}"
+                                                    class="menu_sub_link py-2 txt-button {{ $childActive ? 'active' : '' }}">
+                                                    {{ $child->title }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!-- Popup Search -->
+        <div id="popup_search"
+            class='popup_item popup_search absolute top-0 left-0 w-full h-full bg-black bg-opacity-90 duration-500 hidden'>
+            <button class="btn_close_popup js_btn_close_popup absolute top-16 left-[87vw]">
+                <span class="ph ph-x text-white text-5xl"></span>
+                <span class="blind">button close popup</span>
+            </button>
+            <form
+                class="form_search overflow-hidden absolute top-1/2 left-1/2 w-[80vw] -translate-x-1/2 -translate-y-1/2">
+                <input
+                    class="form_input py-5 lg:pr-28 pr-18 w-full h-full border-b-2 border-variant1 lg:text-6xl text-4xl text-white"
+                    type="text" placeholder="Search..." required />
+                <button
+                    class="flex items-center justify-end absolute top-0 right-0 lg:w-20 w-14 h-full aspect-square text-white">
+                    <span class="ph ph-magnifying-glass lg:text-6xl text-4xl"></span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Popup Wishlist -->
+        <div id="popup_wishlist"
+            class='popup_item popup_wishlist absolute top-0 right-0 sm:w-[500px] w-[80vw] h-full bg-white translate-x-full duration-500'>
+            <div class='popup_wishlist_inner flex flex-col h-full p-6'>
+                <div class="heading flex flex-shrink-0 items-center justify-between w-full pb-5">
+                    <h5 class="heading5">Wishlist</h5>
+                    <button
+                        class="btn_close_popup js_btn_close_popup flex items-center justify-center w-7 h-7 rounded-full bg-black text-white">
+                        <span class="ph ph-x text-lg"></span>
+                        <span class="blind">button close popup</span>
+                    </button>
+                </div>
+                <ul class="wishlist_list overflow-x-hidden w-full h-full max-h-max">
+                    <li class="product_item flex items-center justify-between mt-5 pb-5 border-b border-outline w-full">
+                        <a href="product-detail.html" class="flex items-center gap-4">
+                            <div class="bg-img flex-shrink-0 overflow-hidden md:w-[100px] w-20 aspect-square">
+                                <img src="frontend/assets/images/products/1.jpg" alt="Real Steel Sledge Hammer"
+                                    class='w-full h-full object-cover' />
+                            </div>
+                            <div class="pr-4">
+                                <span class="product_name txt-button line-clamp-2 mb-1">Real Steel Sledge Hammer</span>
+                                <span class="product_price txt-button">$<span>50</span>.00</span>
+                            </div>
+                        </a>
+                        <button
+                            class='btn_remove_product rounded-full bg-transparent text-xl max-md:text-base text-red duration-300 hover:bg-red hover:text-white'>
+                            <span class="ph ph-x-circle text-xl"></span>
+                            <span class="blind">button remove product</span>
+                        </button>
+                    </li>
+                    <li class="product_item flex items-center justify-between mt-5 pb-5 border-b border-outline w-full">
+                        <a href="product-detail.html" class="flex items-center gap-4">
+                            <div class="bg-img flex-shrink-0 overflow-hidden md:w-[100px] w-20 aspect-square">
+                                <img src="frontend/assets/images/products/2.jpg" alt="Dewalt Flooring Knee Pads"
+                                    class='w-full h-full object-cover' />
+                            </div>
+                            <div class="pr-4">
+                                <span class="product_name txt-button line-clamp-2 mb-1">Dewalt Flooring Knee Pads</span>
+                                <span class="product_price txt-button">$<span>40</span>.00</span>
+                            </div>
+                        </a>
+                        <button
+                            class='btn_remove_product rounded-full bg-transparent text-xl max-md:text-base text-red duration-300 hover:bg-red hover:text-white'>
+                            <span class="ph ph-x-circle text-xl"></span>
+                            <span class="blind">button remove product</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Popup Cart -->
+        <div id="popup_cart"
+            class='popup_item popup_cart absolute top-0 right-0 sm:w-[500px] w-[80vw] h-full bg-white translate-x-full duration-500'>
+            <div class='popup_cart_inner flex flex-col h-full p-6'>
+                <div class="heading flex flex-shrink-0 items-center justify-between w-full pb-5">
+                    <h5 class="heading5">Cart</h5>
+                    <button
+                        class="btn_close_popup js_btn_close_popup flex items-center justify-center w-7 h-7 rounded-full bg-black text-white">
+                        <span class="ph ph-x text-lg"></span>
+                        <span class="blind">button close popup</span>
+                    </button>
+                </div>
+                <ul class="cart_list overflow-x-hidden w-full h-full max-h-max">
+                    <li class="product_item flex items-center justify-between mt-5 pb-5 border-b border-outline w-full">
+                        <div class="flex gap-4">
+                            <a href="product-detail.html"
+                                class="bg-img flex-shrink-0 overflow-hidden md:w-[100px] md:h-[100px] w-24 h-24">
+                                <img src="frontend/assets/images/products/1.jpg" alt="Real Steel Sledge Hammer"
+                                    class='w-full h-full object-cover' />
+                            </a>
+                            <div class="w-full">
+                                <a href="product-detail.html" class="block pr-4">
+                                    <span class="product_name txt-button line-clamp-2 mb-1">Real Steel Sledge
+                                        Hammer</span>
+                                    <span class="product_price txt-button">$<span>50</span>.00</span>
+                                </a>
+                                <div class="quantity_form flex items-center gap-5 w-fit mt-4 p-2 border border-outline">
+                                    <button class="btn_decrease_quantity" disabled>
+                                        <span class="ph ph-minus text-xl"></span>
+                                        <span class="blind">button decrease quantity</span>
+                                    </button>
+                                    <span class="quantity -mt-0.5 sm:text-xl text-lg font-bold">1</span>
+                                    <button class="btn_increase_quantity">
+                                        <span class="ph ph-plus text-xl"></span>
+                                        <span class="blind">button increase quantity</span>
+                                    </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+                        <button
+                            class='btn_remove_product rounded-full bg-transparent text-xl max-md:text-base text-red duration-300 hover:bg-red hover:text-white'>
+                            <span class="ph ph-x-circle text-xl"></span>
+                            <span class="blind">button remove product</span>
+                        </button>
+                    </li>
+                    <li class="product_item flex items-center justify-between mt-5 pb-5 border-b border-outline w-full">
+                        <div class="flex gap-4">
+                            <a href="product-detail.html"
+                                class="bg-img flex-shrink-0 overflow-hidden md:w-[100px] md:h-[100px] w-24 h-24">
+                                <img src="frontend/assets/images/products/2.jpg" alt="Dewalt Flooring Knee Pads"
+                                    class='w-full h-full object-cover' />
+                            </a>
+                            <div class="w-full">
+                                <a href="product-detail.html" class="block pr-4">
+                                    <span class="product_name txt-button line-clamp-2 mb-1">Dewalt Flooring Knee
+                                        Pads</span>
+                                    <span class="product_price txt-button">$<span>40</span>.00</span>
+                                </a>
+                                <div class="quantity_form flex items-center gap-5 w-fit mt-4 p-2 border border-outline">
+                                    <button class="btn_decrease_quantity" disabled>
+                                        <span class="ph ph-minus text-xl"></span>
+                                        <span class="blind">button decrease quantity</span>
+                                    </button>
+                                    <span class="quantity -mt-0.5 sm:text-xl text-lg font-bold">1</span>
+                                    <button class="btn_increase_quantity">
+                                        <span class="ph ph-plus text-xl"></span>
+                                        <span class="blind">button increase quantity</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class='btn_remove_product rounded-full bg-transparent text-xl max-md:text-base text-red duration-300 hover:bg-red hover:text-white'>
+                            <span class="ph ph-x-circle text-xl"></span>
+                            <span class="blind">button remove product</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
+        </div>
+
+        <!-- Popup Video -->
+        <div id="popup_video"
+            class='popup_item popup_video absolute md:w-[50vw] w-[90vw] aspect-[16/9] bg-white duration-500 hidden'>
+            <iframe class="w-full h-full object-cover"
+                src="https://www.youtube.com/embed/eoiRkkmg2NA?si=Q4WVpTusWMVT5Eej&amp;controls=1&amp;rel=0&amp;enablejsapi=1"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
 
-    <script src="{{ url('frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('frontend/js/aos.js') }}"></script>
-    <script src="{{ url('frontend/js/fontawesome.js') }}"></script>
-    <script src="{{ url('frontend/js/jquery.countup.js') }}"></script>
-    <script src="{{ url('frontend/js/mobile-menu.js') }}"></script>
-    <script src="{{ url('frontend/js/jquery.magnific-popup.js') }}"></script>
-    <script src="{{ url('frontend/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ url('frontend/js/slick-slider.js') }}"></script>
-    <script src="{{ url('frontend/js/gsap.min.js') }}"></script>
-    <script src="{{ url('frontend/js/ScrollTrigger.min.js') }}"></script>
-    <script src="{{ url('frontend/js/Splitetext.js') }}"></script>
-    <script src="{{ url('frontend/js/SmoothScroll.js') }}"></script>
-    <script src="{{ url('frontend/js/text-animation.js') }}"></script>
-    <script src="{{ url('frontend/js/jquery.lineProgressbar.js') }}"></script>
-    <script src="{{ url('frontend/js/tilt.jquery.js') }}"></script>
-    <script src="{{ url('frontend/js/main.js') }}"></script>
-    <script src="{{ url('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/phosphor-icons.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/scrollSmooth.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/countUp.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
 </body>
 
 </html>

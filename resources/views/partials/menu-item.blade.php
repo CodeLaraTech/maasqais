@@ -4,112 +4,62 @@
     $isActive = request()->is($itemUrl) || request()->is($itemUrl . '/*') || ($item->url == '/' && $currentUrl == '/');
 @endphp
 
-<li class="{{ $item->children->count() ? 'dropdown-menu-parrent' : '' }}">
-    <a href="{{ url($item->url) }}" class="main1 {{ $isActive ? 'active' : '' }}">
-        {{ $item->title }}
-        @if ($item->children->count())
-            <i class="fa-solid fa-angle-down"></i>
+<li class="menu_item h-full relative {{ $item->children->count() ? 'has-children' : '' }}">
+    <a href="{{ url($item->url) }}"
+       class="menu_link inline-flex items-center gap-1 h-full text-white {{ $isActive ? 'active' : '' }}">
+        <span class="has_line line_red txt-button">{{ $item->title }}</span>
+        @if($item->children->count())
+            <span class="ph-bold ph-caret-down mt-0.5 text-xs"></span>
         @endif
     </a>
 
-    @if ($item->children->count())
-        @if($item->title === 'Home')
-            {{-- Special mega menu for Home --}}
-            <div class="tp-submenu">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="all-images-menu">
-                            @foreach ($item->children as $child)
-                                @if($loop->index < 5) {{-- First 5 items --}}
-                                    <div class="homemenu-thumb" style="{{ $loop->last ? 'margin: 0 0 20px 0;' : '' }}">
-                                        <div class="img1">
-                                            <img src="{{ $child->image ?? 'assets/img/demo/demo'.$loop->iteration.'.jpg' }}" alt="">
-                                        </div>
-                                        <div class="homemenu-btn">
-                                            <a class="header-btn1" target="_blank" href="{{ $child->url }}">Multi Page <i class="fa-solid fa-arrow-right"></i></a>
-                                            <div class="space16"></div>
-                                            <a class="header-btn1" target="_blank" href="{{ $child->single_page_url ?? $child->url }}" target="_blank">One page <i class="fa-solid fa-arrow-right"></i></a>
-                                        </div>
-                                        <a href="{{ $child->url }}" target="_blank" class="bottom-heading">{{ $child->title }}</a>
+    {{-- Dropdowns / Mega Menu --}}
+    @if($item->children->count())
+
+        {{-- Example: Services (Mega Menu) --}}
+        @if(strtolower($item->title) === 'services')
+            <div
+                class="menu_sub menu_sub_mega invisible fixed top-[6.25rem] right-0 left-0 translate-y-5 opacity-0 pointer-events-none duration-400">
+                <div class="container">
+                    <ul class="services_list grid grid-cols-3 gap-4 w-full p-8 border-t border-outline bg-white">
+                        @foreach($item->children as $child)
+                            <li class="services_item">
+                                <a href="{{ url($child->url) }}"
+                                   class="services_link flex gap-5 py-4 px-5 border border-outline hover:bg-red hover:bg-opacity-10 hover:border-red duration-300 group">
+                                    @if(!empty($child->icon))
+                                        <span class="{{ $child->icon }} flex-shrink-0 text-5xl duration-300 group-hover:text-red"></span>
+                                    @endif
+                                    <div class="services_info">
+                                        <strong class="services_tit heading6 group-hover:text-red duration-300">
+                                            {{ $child->title }}
+                                        </strong>
+                                        @if(!empty($child->description))
+                                            <p class="services_desc mt-1 caption1 text-variant1 text-ellipsis line-clamp-2">
+                                                {{ $child->description }}
+                                            </p>
+                                        @endif
                                     </div>
-                                @endif
-                            @endforeach
-                        </div>
-                        
-                        <div class="all-images-menu">
-                            @foreach ($item->children as $child)
-                                @if($loop->index >= 5) {{-- Next 5 items --}}
-                                    <div class="homemenu-thumb" style="{{ $loop->last ? 'margin: 0 0 20px 0;' : '' }}">
-                                        <div class="img1">
-                                            <img src="{{ $child->image ?? 'assets/img/demo/demo'.($loop->iteration+1).'.jpg' }}" alt="">
-                                        </div>
-                                        <div class="homemenu-btn">
-                                            <a class="header-btn1" target="_blank" href="{{ $child->url }}">Multi Page <i class="fa-solid fa-arrow-right"></i></a>
-                                            <div class="space16"></div>
-                                            <a class="header-btn1" target="_blank" href="{{ $child->single_page_url ?? $child->url }}" target="_blank">One page <i class="fa-solid fa-arrow-right"></i></a>
-                                        </div>
-                                        <a href="{{ $child->url }}" target="_blank" class="bottom-heading">{{ $child->title }}</a>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
-        @elseif($item->title === 'Pages')
-            {{-- Mega menu for Pages --}}
-            <div class="mega-menu-all">
-                <div class="row">
-                    @foreach($item->children->chunk(4) as $chunk)
-                        <div class="col-md-3">
-                            <div class="mega-menu-single {{ $loop->first ? 'dis1' : '' }}">
-                                <h3>{{ $chunk->first()->group ?? 'Section' }}</h3>
-                                <ul>
-                                    @foreach($chunk as $child)
-                                        @php
-                                            $childUrl = trim($child->url, '/');
-                                            $childActive = request()->is($childUrl) || request()->is($childUrl . '/*');
-                                        @endphp
-                                        <li><a href="{{ url($child->url) }}" class="{{ $childActive ? 'active' : '' }}">{{ $child->title }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+
+        {{-- Standard Dropdown --}}
         @else
-            {{-- Regular dropdown menu --}}
-            <ul>
-                @foreach ($item->children as $child)
+            <ul
+                class="menu_sub invisible absolute top-full -left-6 min-w-[13.75rem] p-3 border-t border-outline bg-white translate-y-5 opacity-0 pointer-events-none shadow duration-400">
+                @foreach($item->children as $child)
                     @php
                         $childUrl = trim($child->url, '/');
-                        $childActive = request()->is($childUrl) || request()->is($childUrl . '/*');
+                        $childActive = request()->is($childUrl) || request()->is($childUrl.'/*');
                     @endphp
-                    
-                    <li class="{{ $child->children->count() ? 'has-dropdown has-dropdown1' : '' }}">
-                        <a href="{{ url($child->url) }}" class="{{ $childActive ? 'active' : '' }} main">
+                    <li class="menu_sub_item">
+                        <a href="{{ url($child->url) }}"
+                           class="menu_sub_link block px-3 py-[0.875rem] txt-button hover:bg-red hover:bg-opacity-10 hover:text-red duration-300 {{ $childActive ? 'active' : '' }}">
                             {{ $child->title }}
-                            @if ($child->children->count())
-                                <span><i class="fa-solid fa-angle-right"></i></span>
-                            @endif
                         </a>
-                        
-                        @if ($child->children->count())
-                            <ul class="sub-menu">
-                                @foreach ($child->children as $subchild)
-                                    @php
-                                        $subchildUrl = trim($subchild->url, '/');
-                                        $subchildActive = request()->is($subchildUrl) || request()->is($subchildUrl . '/*');
-                                    @endphp
-                                    <li>
-                                        <a href="{{ url($subchild->url) }}" class="{{ $subchildActive ? 'active' : '' }}">
-                                            {{ $subchild->title }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
                     </li>
                 @endforeach
             </ul>
