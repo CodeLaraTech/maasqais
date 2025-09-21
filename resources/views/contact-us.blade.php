@@ -44,7 +44,7 @@
                     </li>
                     <li class="flex items-center gap-3 animate">
                         <span class="ph ph-phone-call text-2xl"></span>
-                        <span>1-555-678-8888</span>
+                        <span>+966 53 231 3346</span>
                     </li>
                 </ul>
                 <div class="btn_area animate">

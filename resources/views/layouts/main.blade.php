@@ -45,18 +45,6 @@
                     </li>
                 @endif
 
-                <!-- Language Selector -->
-                <li>
-                    <div class="form_select">
-                        <select class="pr-9 caption1 uppercase" name="selectLanguage" id="selectLanguage">
-                            <option class="text-black" value="en">en</option>
-                            <option class="text-black" value="fr">fr</option>
-                            <option class="text-black" value="de">de</option>
-                        </select>
-                        <span class="ph ph-caret-down arrow_down text-xs text-white"></span>
-                    </div>
-                </li>
-
             </ul>
 
             <!-- Social Links -->
@@ -371,7 +359,7 @@
                         <div class="footer_nav_area max-md:w-full">
                             <strong class="footer_nav_heading txt-label">Get a Free Estimate Today!</strong>
                             <p class="footer_nav_desc mt-3 text-variant2">Call us for a cost estimate over the phone</p>
-                            <h5 class="footer_nav_contact heading5 mt-4">{{ $web_settings['phone'] ?? '1-555-678-8888' }}
+                            <h5 class="footer_nav_contact heading5 mt-4">{{ $web_settings['phone'] ?? '+966 53 231 3346' }}
                             </h5>
                             <a href="{{ url('/book-appointment') }}" class="btn mt-4 bg-red hover:bg-white">Request an
                                 estimate</a>
