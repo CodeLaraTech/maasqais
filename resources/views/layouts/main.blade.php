@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ url('frontend/assets/css/icomoon/style.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/dist/output-tailwind.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/dist/output-scss.css') }}">
+    <!-- Font Awesome 6 Free -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 
 
 </head>
@@ -97,7 +100,7 @@
                 <a href="{{ url('/') }}" class="logo flex items-center gap-3">
                     <img src="{{ asset($web_settings['logo'] ?? 'frontend/assets/images/logo_red.png') }}"
                         class="flex-shrink-0 w-20" alt="logo">
-                    
+
                 </a>
             </h1>
 
@@ -124,29 +127,6 @@
                             </button>
                         </li>
 
-                        <!-- Wishlist -->
-                        <li class="menu_icons_item inline-block align-middle relative ml-5">
-                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_wishlist">
-                                <span class="ph ph-heart text-2xl text-white"></span>
-                                <span class="blind">button wishlist</span>
-                            </button>
-                            <span
-                                class="wishlist_quantity flex items-center justify-center absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white text-[10px] pointer-events-none">
-                                {{ $wishlist_count ?? 0 }}
-                            </span>
-                        </li>
-
-                        <!-- Cart -->
-                        <li class="menu_icons_item inline-block align-middle relative ml-5">
-                            <button class="menu_icons_btn js_btn_open_popup" data-popup="popup_cart">
-                                <span class="ph ph-shopping-bag-open text-2xl text-white"></span>
-                                <span class="blind">button cart</span>
-                            </button>
-                            <span
-                                class="cart_quantity flex items-center justify-center absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white text-[10px] pointer-events-none">
-                                {{ $cart_count ?? 0 }}
-                            </span>
-                        </li>
 
                         <!-- Mobile Menu -->
                         <li class="menu_icons_item inline-block align-middle ml-5 lg:hidden">
@@ -160,7 +140,7 @@
 
                 <!-- Request Estimate -->
                 <li class="max-xl:hidden">
-                    <a href="#" class="btn bg-red">Request an estimate</a>
+                    <a href="{{ url('contact-us') }}" class="btn bg-red">Request an estimate</a>
                 </li>
 
                 <!-- Phone -->
@@ -198,18 +178,18 @@
                 <div class="footer_info md:w-1/4 w-full">
                     <h1>
                         <a href="{{ url('/') }}" class="footer_logo flex items-center gap-3">
-                            <img src="{{ url('frontend/assets/images/logo_red.png') }}"
-                                class="flex-shrink-0 w-20" alt="logo">
-                            
+                            <img src="{{ url('frontend/assets/images/logo_red.png') }}" class="flex-shrink-0 w-20"
+                                alt="logo">
+
                         </a>
                     </h1>
 
                     <div class="footer_map mt-7">
                         <div class="flex items-center gap-2 pb-2">
                             <span class="ph ph-map-pin text-2xl"></span>
-                            <span>{!! $web_settings['address'] ?? 'Jeddah, Saudi Arabia' !!}</span>
+                            <span>{!! $web_settings['address'] ?? 'G6P7+JW2 Mishrifah, Jeddah Saudi Arabia' !!}</span>
                         </div>
-                        <a href="{{ $web_settings['map_link'] ?? '#' }}"
+                        <a href="{{ $web_settings['map_link'] ?? 'https://maps.app.goo.gl/nN8uYfBkUUSGZxbEA' }}"
                             class="text-sm font-bold underline duration-300 hover:text-red" target="_blank">Google map</a>
                     </div>
 
@@ -304,7 +284,7 @@
 
                         {{-- About Menu --}}
                         <div class="footer_nav_area max-sm:w-full">
-                            <strong class="footer_nav_heading txt-label max-sm:hidden">About</strong>
+                            <strong class="footer_nav_heading txt-label max-sm:hidden">Pages</strong>
                             <ul class="footer_nav_list flex flex-col gap-2 mt-3">
                                 @if ($footer_menu_1)
                                     @foreach ($footer_menu_1->items as $item)
@@ -323,6 +303,50 @@
                         <div class="footer_nav_area max-sm:w-full">
                             <strong class="footer_nav_heading txt-label max-sm:hidden">Categories</strong>
                             <ul class="footer_nav_list flex flex-col gap-2 mt-3">
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Belts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Tools
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Safety & PPE
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Packing Materials
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Oil & Lubricants
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">
+                                        Bearings
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        {{-- Extra Static Quick Links --}}
+                        <div class="footer_nav_area max-sm:w-full">
+                            <strong class="footer_nav_heading txt-label max-sm:hidden">Rules & Regulations</strong>
+                            <ul class="footer_nav_list flex flex-col gap-2 mt-3">
                                 @if ($footer_menu_2)
                                     @foreach ($footer_menu_2->items as $item)
                                         <li>
@@ -336,24 +360,6 @@
                             </ul>
                         </div>
 
-                        {{-- Extra Static Quick Links --}}
-                        <div class="footer_nav_area max-sm:w-full">
-                            <strong class="footer_nav_heading txt-label max-sm:hidden">Quick Links</strong>
-                            <ul class="footer_nav_list flex flex-col gap-2 mt-3">
-                                <li><a href="{{ url('/services') }}"
-                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Our
-                                        Services</a></li>
-                                <li><a href="{{ url('/pricing') }}"
-                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Pricing
-                                        Plans</a></li>
-                                <li><a href="{{ url('/shop') }}"
-                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Shop</a>
-                                </li>
-                                <li><a href="{{ url('/contact') }}"
-                                        class="footer_nav_link has_line line_white capitalize text-variant2 hover:text-white duration-300">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
 
                         {{-- Contact Call To Action --}}
                         <div class="footer_nav_area max-md:w-full">
@@ -361,7 +367,7 @@
                             <p class="footer_nav_desc mt-3 text-variant2">Call us for a cost estimate over the phone</p>
                             <h5 class="footer_nav_contact heading5 mt-4">{{ $web_settings['phone'] ?? '+966 53 231 3346' }}
                             </h5>
-                            <a href="{{ url('/book-appointment') }}" class="btn mt-4 bg-red hover:bg-white">Request an
+                            <a href="{{ url('/contact-us') }}" class="btn mt-4 bg-red hover:bg-white">Request an
                                 estimate</a>
                         </div>
                     </div>
@@ -374,13 +380,26 @@
                         Copyright © {{ date('Y') }} {{ $web_settings['site_name'] ?? 'One Global Solutions' }}.
                         All rights reserved
                     </p>
-                    <div class="footer_bottom_link flex items-center gap-2.5">
-                        <a class="text-variant2 hover:underline hover:text-white" href="{{ url('/terms') }}">Terms Of
-                            Services</a>
-                        <span class="text-white opacity-10">|</span>
-                        <a class="text-variant2 hover:underline hover:text-white"
-                            href="{{ url('/privacy-policy') }}">Privacy Policy</a>
+                    <div class="footer_bottom_link flex items-center gap-4">
+                        <!-- Facebook -->
+                        <a href="#" class="text-variant2 hover:text-white">
+                            <span class="ph ph-facebook-logo text-2xl"></span>
+                        </a>
+                        <!-- Twitter -->
+                        <a href="#" class="text-variant2 hover:text-white">
+                            <span class="ph ph-twitter-logo text-2xl"></span>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="#" class="text-variant2 hover:text-white">
+                            <span class="ph ph-instagram-logo text-2xl"></span>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" class="text-variant2 hover:text-white">
+                            <span class="ph ph-linkedin-logo text-2xl"></span>
+                        </a>
                     </div>
+
+
                 </div>
             </div>
         </footer>
@@ -402,7 +421,7 @@
                     <a href="{{ url('/') }}" class="logo flex items-center gap-3">
                         <img src="{{ asset($web_settings['logo'] ?? 'frontend/assets/images/logo_red.png') }}"
                             class="flex-shrink-0 w-12" alt="{{ $web_settings['site_name'] ?? 'Logo' }}">
-                        
+
                     </a>
                     <button
                         class="btn_close_popup js_btn_close_popup flex items-center justify-center w-7 h-7 rounded-full bg-black text-white">

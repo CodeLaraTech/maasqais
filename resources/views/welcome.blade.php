@@ -110,17 +110,18 @@
                             <a href="{{ url('about-us') }}" class="btn bg-red">About Us</a>
                         </li>
                         <li class="animate" style="--i: 2">
-                            <a href="#" class="flex items-center gap-3 group">
+                            <a href="{{ url('contact-us') }}" class="flex items-center gap-3 group">
                                 <span
                                     class="flex items-center justify-center w-14 h-14 border-2 border-red duration-400 group-hover:bg-red group-hover:text-white">
-                                    <span class="ph ph-envelope-simple text-3xl"></span>
+                                    <span class="ph ph-chat-text text-3xl"></span>
                                 </span>
                                 <div>
                                     <span class="text-variant1">Have any Question?</span>
-                                    <strong class="heading6 block mt-0.5">info@maasqais.com</strong>
+                                    <strong class="heading6 block mt-0.5">We’re here for you, get in touch</strong>
                                 </div>
                             </a>
                         </li>
+
                     </ul>
                 </div>
                 <div class="about_img flex-shrink-0 grid grid-cols-2 sm:gap-7.5 gap-6 relative xl:w-[55%] sm:w-2/3 w-full">
@@ -608,7 +609,8 @@
                             </span>
                             <div>
                                 <span class="caption1 text-variant2">Our Location</span>
-                                <p class="mt-1">Jeddah, Saudi Arabia</p>
+                                <p class="mt-1">
+                                    G6P7+JW2 Mishrifah, Jeddah Saudi Arabia</p>
                             </div>
                         </li>
                         <li class="item flex gap-3 animate" style="--i: 2">
@@ -676,94 +678,97 @@
             </div>
         </section>
 
-        <!-- VIDEO -->
-        <section class="section video animate">
-            <div class="video_inner flex items-center justify-center lg:h-[35rem] h-[20rem]">
-                <h3 class="blind">Video</h3>
-                <img src="frontend/assets/images/components/bg_video4.jpg"
-                    class="absolute top-0 left-0 z-[-1] w-full h-full object-cover" alt="video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="frontend/assets/images/other/video4.mp4" type="video/mp4">
-                </video>
-                <button class="btn_play js_btn_open_popup absolute w-full h-full" data-popup="popup_video">
-                    <span class="blind">button play video</span>
-                </button>
-            </div>
-        </section>
 
-        @if(isset($blogs) && count($blogs))
-            <!-- LATEST NEWS -->
-            <section class="section blog sm:py-25 py-15">
-                <div class="container flex flex-col items-center">
-                    <span class="section_tag tag animate">Industry Insights</span>
-                    <h3 class="section_tit mt-4 heading3 text-center animate">Latest Industrial News & Tips</h3>
-                    <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 text-center animate">
-                        Stay updated with the latest trends, insights, and tips for industrial supplies and procurement.
-                    </p>
+        @if(isset($blogs) && $blogs->count())
+    <!-- LATEST NEWS -->
+    <section class="section blog sm:py-25 py-15">
+        <div class="container flex flex-col items-center">
+            <span class="section_tag tag animate">Industry Insights</span>
+            <h3 class="section_tit mt-4 heading3 text-center animate">Latest Industrial News & Tips</h3>
+            <p class="section_desc lg:mt-5 mt-3 body2 text-variant1 text-center animate">
+                Stay updated with the latest trends, insights, and tips for industrial supplies and procurement.
+            </p>
 
-                    <ul class="blog_list grid lg:grid-cols-2 gap-7.5 w-full lg:mt-12 mt-9">
-                        @foreach($blogs as $blog)
-                            @if($loop->first)
-                                <!-- Featured Blog -->
-                                <li class="blog_item flex flex-col gap-6 animate animate_right">
-                                    <a href="#" class="blog_thumb block overflow-hidden group">
-                                        <img src="{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
-                                            class="duration-400 group-hover:scale-110"
-                                            alt="{{ $blog->getTranslation('title', app()->getLocale()) }}">
-                                    </a>
-                                    <div class="blog_info">
-                                        <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
-                                            <span class="blog_date">{{ $blog->created_at->format('F d, Y') }}</span>
-                                            <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
+            <ul class="blog_list grid lg:grid-cols-2 gap-7.5 w-full lg:mt-12 mt-9">
+                @foreach($blogs as $blog)
+                    @if($loop->first)
+                        <!-- Featured Blog -->
+                        <li class="blog_item flex flex-col gap-6 animate animate_right">
+                            <a href="#" class="blog_thumb block overflow-hidden group">
+                                <img src="{{ $blog->featured_image ? asset('storage/' . $blog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
+                                    class="duration-400 group-hover:scale-110"
+                                    alt="{{ $blog->getTranslation('title', app()->getLocale()) }}">
+                            </a>
+                            <div class="blog_info">
+                                <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
+                                    <span class="blog_date">{{ $blog->created_at->format('F d, Y') }}</span>
+                                    <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
+
+                                    @if($blog->categories && $blog->categories->count())
+                                        @foreach($blog->categories as $cat)
                                             <a href="#" class="blog_cate duration-300 hover:underline hover:text-black">
-                                                {{ $blog->category->name ?? 'Uncategorized' }}
+                                                {{ $cat->name }}
+                                            </a>
+                                        @endforeach
+                                    @else
+                                        <span class="blog_cate">Uncategorized</span>
+                                    @endif
+                                </div>
+
+                                <a href="#" class="block mt-4">
+                                    <strong class="blog_tit line-clamp-2 heading4 duration-300 hover:text-orange">
+                                        {{ $blog->getTranslation('title', app()->getLocale()) }}
+                                    </strong>
+                                    <p class="blog_tit mt-5 line-clamp-2 text-variant1">
+                                        {!! Str::limit(strip_tags($blog->getTranslation('content', app()->getLocale())), 150) !!}
+                                    </p>
+                                </a>
+                            </div>
+                        </li>
+                    @else
+                        <!-- Other Blogs -->
+                        <li>
+                            <ul class="flex flex-col sm:gap-6 gap-7.5">
+                                @foreach($blogs->slice(1) as $index => $otherBlog)
+                                    <li class="blog_item flex max-sm:flex-col sm:items-center gap-6 animate animate_left"
+                                        style="--i: {{ $index + 1 }}">
+                                        <a href="#" class="blog_thumb block flex-shrink-0 overflow-hidden sm:w-56 group">
+                                            <img src="{{ $otherBlog->featured_image ? asset('storage/' . $otherBlog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
+                                                class="duration-400 group-hover:scale-110"
+                                                alt="{{ $otherBlog->getTranslation('title', app()->getLocale()) }}">
+                                        </a>
+                                        <div class="blog_info">
+                                            <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
+                                                <span class="blog_date">{{ $otherBlog->created_at->format('F d, Y') }}</span>
+                                                <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
+
+                                                @if($otherBlog->categories && $otherBlog->categories->count())
+                                                    @foreach($otherBlog->categories as $cat)
+                                                        <a href="#" class="blog_cate duration-300 hover:underline hover:text-black">
+                                                            {{ $cat->name }}
+                                                        </a>
+                                                    @endforeach
+                                                @else
+                                                    <span class="blog_cate">Uncategorized</span>
+                                                @endif
+                                            </div>
+
+                                            <a href="#" class="blog_tit mt-4 line-clamp-2 heading5 duration-300 hover:text-orange">
+                                                {{ $otherBlog->getTranslation('title', app()->getLocale()) }}
                                             </a>
                                         </div>
-                                        <a href="#" class="block mt-4">
-                                            <strong class="blog_tit line-clamp-2 heading4 duration-300 hover:text-orange">
-                                                {{ $blog->getTranslation('title', app()->getLocale()) }}
-                                            </strong>
-                                            <p class="blog_tit mt-5 line-clamp-2 text-variant1">
-                                                {!! Str::limit(strip_tags($blog->getTranslation('content', app()->getLocale())), 150) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </li>
-                            @else
-                                <!-- Other Blogs -->
-                                <li>
-                                    <ul class="flex flex-col sm:gap-6 gap-7.5">
-                                        @foreach($blogs->slice(1) as $index => $otherBlog)
-                                            <li class="blog_item flex max-sm:flex-col sm:items-center gap-6 animate animate_left"
-                                                style="--i: {{ $index + 1 }}">
-                                                <a href="#" class="blog_thumb block flex-shrink-0 overflow-hidden sm:w-56 group">
-                                                    <img src="{{ $otherBlog->featured_image ? asset('storage/' . $otherBlog->featured_image) : asset('frontend/assets/images/blog/default.jpg') }}"
-                                                        class="duration-400 group-hover:scale-110"
-                                                        alt="{{ $otherBlog->getTranslation('title', app()->getLocale()) }}">
-                                                </a>
-                                                <div class="blog_info">
-                                                    <div class="flex flex-wrap items-center gap-3 txt-label text-variant1">
-                                                        <span class="blog_date">{{ $otherBlog->created_at->format('F d, Y') }}</span>
-                                                        <span class="flex-shrink-0 w-px h-3 bg-outline"></span>
-                                                        <a href="#" class="blog_cate duration-300 hover:underline hover:text-black">
-                                                            {{ $otherBlog->category->name ?? 'Uncategorized' }}
-                                                        </a>
-                                                    </div>
-                                                    <a href="#" class="blog_tit mt-4 line-clamp-2 heading5 duration-300 hover:text-orange">
-                                                        {{ $otherBlog->getTranslation('title', app()->getLocale()) }}
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                @break
-                            @endif
-                        @endforeach
-                    </ul>
-                </div>
-            </section>
-        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @break
+                    @endif
+                @endforeach
+            </ul>
+        </div>
+    </section>
+@endif
+
 
     </main>
 @endsection

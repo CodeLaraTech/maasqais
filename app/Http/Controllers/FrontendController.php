@@ -68,20 +68,22 @@ class FrontendController extends Controller
                 : collect();
 
             // 🔹 Other Blogs (exclude Success Stories)
-            $blogs = Blog::where('status', 'published')
+            $blogs = Blog::with('categories') // eager load categories
+                ->where('status', 'published')
                 ->whereDoesntHave('categories', function ($q) use ($successCategory) {
                     if ($successCategory) {
-                        $q->where('cms_blog_categories.id', $successCategory->id); // specify table
+                        $q->where('cms_blog_categories.id', $successCategory->id);
                     }
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate(5);
         } else {
-            // Other pages → all blogs
-            $blogs = Blog::where('status', 'published')
+            $blogs = Blog::with('categories') // eager load categories for other pages too
+                ->where('status', 'published')
                 ->orderBy('created_at', 'desc')
                 ->paginate(5);
         }
+
 
         return view($template, [
             'page' => $page,

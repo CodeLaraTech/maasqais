@@ -36,7 +36,7 @@
                 <ul class="list_feature flex flex-col gap-3 mt-7 pt-7 border-t border-outline">
                     <li class="flex items-center gap-3 animate">
                         <span class="ph ph-map-pin text-2xl"></span>
-                        <span>Jeddah, Saudi Arabic</span>
+                        <span>G6P7+JW2 Mishrifah, Jeddah Saudi Arabia</span>
                     </li>
                     <li class="flex items-center gap-3 animate">
                         <span class="ph ph-envelope text-2xl"></span>
@@ -48,7 +48,7 @@
                     </li>
                 </ul>
                 <div class="btn_area animate">
-                    <a href="https://maps.app.goo.gl/Z8zKdiKbpcEdV6MV8"
+                    <a href="https://maps.app.goo.gl/nN8uYfBkUUSGZxbEA"
                         class="inline-flex gap-1 mt-7 duration-300 hover:text-orange" target="_blank">
                         <strong class="txt-button underline underline-offset-4">Google map</strong>
                         <span class="ph-bold ph-arrow-right text-xl"></span>
@@ -116,10 +116,10 @@
         </div>
     </section>
     <!-- MAP -->
-    <section class="section map h-[520px]">
+    <section class="section map ">
         <h3 class="blind">Map</h3>
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d475325.03137566603!2d38.881491443934955!3d21.44980016391344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d01fb1137e59%3A0xe059579737b118db!2sJeddah%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1758349470198!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3711.2642934353203!2d39.21219967527064!3d21.536518680243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDMyJzExLjUiTiAzOcKwMTInNTMuMiJF!5e0!3m2!1sen!2sin!4v1758515414592!5m2!1sen!2sin"
             width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>

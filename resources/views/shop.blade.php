@@ -168,6 +168,174 @@
                             </div>
                         </a>
                     </li>
+                    <!-- 7. General Electricals -->
+<li class="services_item animate show" style="--i: 7">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-7.jpg"
+                    class="duration-400 group-hover:scale-110" alt="General Electricals">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-plug sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">General Electricals</strong>
+            <p class="services_desc mt-4 text-variant1">
+                Electrical supplies including wires, switches, connectors, fuses, and more — ensuring
+                safety and reliability in every installation.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
+<!-- 8. Cleaning Materials -->
+<li class="services_item animate show" style="--i: 8">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-8.jpg"
+                    class="duration-400 group-hover:scale-110" alt="Cleaning Materials">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-broom sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">Cleaning Materials</strong>
+            <p class="services_desc mt-4 text-variant1">
+                Industrial-grade cleaning chemicals, detergents, mops, brushes, and consumables to
+                maintain cleanliness and hygiene.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
+<!-- 9. Fasteners -->
+<li class="services_item animate show" style="--i: 9">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-9.jpg"
+                    class="duration-400 group-hover:scale-110" alt="Fasteners">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-screwdriver-wrench sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">Fasteners</strong>
+            <p class="services_desc mt-4 text-variant1">
+                Nuts, bolts, screws, washers, anchors, and specialty fasteners. Manufactured to exacting
+                standards for dependable strength.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
+<!-- 10. Industrial Consumables -->
+<li class="services_item animate show" style="--i: 10">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-10.jpg"
+                    class="duration-400 group-hover:scale-110" alt="Industrial Consumables">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-toolbox sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">Industrial Consumables</strong>
+            <p class="services_desc mt-4 text-variant1">
+                Daily-use industrial items such as adhesives, welding rods, abrasives, and sealants.
+                Essential to keep your operations uninterrupted.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
+<!-- 11. Pressure Gauges -->
+<li class="services_item animate show" style="--i: 11">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-11.jpg"
+                    class="duration-400 group-hover:scale-110" alt="Pressure Gauges">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-gauge-high sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">Pressure Gauges</strong>
+            <p class="services_desc mt-4 text-variant1">
+                Accurate instruments for monitoring gas and liquid pressure in industrial systems, ensuring
+                safety and performance.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
+<!-- 12. Raw Materials -->
+<li class="services_item animate show" style="--i: 12">
+    <a href="#" class="services_link flex flex-col gap-7 h-full p-7 bg-white group">
+        <div class="services_thumb relative">
+            <div class="services_img overflow-hidden">
+                <img src="frontend/assets/images/services/2-12.jpg"
+                    class="duration-400 group-hover:scale-110" alt="Raw Materials">
+            </div>
+            <span
+                class="services_icon flex items-center justify-center flex-shrink-0 absolute sm:-bottom-10 -bottom-7 right-5 
+                       sm:w-20 w-14 sm:h-20 h-14 border-8 border-white bg-black duration-500 group-hover:bg-blue">
+                <i class="fa-solid fa-box sm:text-3xl text-xl text-white"></i>
+            </span>
+        </div>
+        <div class="services_info">
+            <strong class="services_name heading5 hover:underline">Raw Materials</strong>
+            <p class="services_desc mt-4 text-variant1">
+                A wide variety of raw materials including metals, plastics, and chemicals tailored to
+                production and manufacturing needs.
+            </p>
+            <span class="flex items-center gap-2 mt-4 duration-300 hover:text-blue">
+                <span class="border-b-2 underline-offset-2 txt-button">Learn More</span>
+                <i class="fa-solid fa-arrow-up-right text-2xl text-white"></i>
+            </span>
+        </div>
+    </a>
+</li>
+
 
                 </ul>
             </div>
